@@ -15,12 +15,14 @@ final class StocksViewController: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(StockCell.self, forCellReuseIdentifier: StockCell.typeName)
         table.separatorStyle = .none
+        table.showsVerticalScrollIndicator = false
         return table
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .purple
+        view.backgroundColor = .white
+        tableView.delegate = self
         tableView.dataSource = self
         setupSubviews()
     }
@@ -37,13 +39,28 @@ final class StocksViewController: UIViewController {
     }
 }
 
+extension StocksViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+}
+
 extension StocksViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.typeName, for: indexPath) as! StockCell
+        cell.setBackgroundColor(for: indexPath.row)
         
         return cell
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         30
     }
