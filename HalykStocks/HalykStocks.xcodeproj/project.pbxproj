@@ -27,6 +27,7 @@
 		CEA08E3D283DF8EC001375DA /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEA08E29283DF8EC001375DA /* Montserrat-Italic.ttf */; };
 		CEA08E3F283DF8EC001375DA /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEA08E2B283DF8EC001375DA /* Montserrat-SemiBoldItalic.ttf */; };
 		CEA08E40283DF8EC001375DA /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEA08E2C283DF8EC001375DA /* Montserrat-ExtraBoldItalic.ttf */; };
+		CEA08E55283F9173001375DA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E54283F9173001375DA /* Extensions.swift */; };
 		CEA3866D283D3F6A0061FCF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA3866C283D3F6A0061FCF0 /* AppDelegate.swift */; };
 		CEA38671283D3F6A0061FCF0 /* StocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA38670283D3F6A0061FCF0 /* StocksViewController.swift */; };
 		CEA38676283D3F6D0061FCF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA38675283D3F6D0061FCF0 /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		CEA08E29283DF8EC001375DA /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		CEA08E2B283DF8EC001375DA /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		CEA08E2C283DF8EC001375DA /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		CEA08E54283F9173001375DA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CEA38669283D3F6A0061FCF0 /* HalykStocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HalykStocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA3866C283D3F6A0061FCF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA38670283D3F6A0061FCF0 /* StocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksViewController.swift; sourceTree = "<group>"; };
@@ -88,8 +90,9 @@
 		CEA08E17283DF78A001375DA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CEA08E18283DF8EB001375DA /* Montserrat */,
 				CEA38675283D3F6D0061FCF0 /* Assets.xcassets */,
+				CEA08E18283DF8EB001375DA /* Montserrat */,
+				CEA08E54283F9173001375DA /* Extensions.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				CEA38671283D3F6A0061FCF0 /* StocksViewController.swift in Sources */,
 				CEA3866D283D3F6A0061FCF0 /* AppDelegate.swift in Sources */,
 				CEA08E16283D4462001375DA /* StockCell.swift in Sources */,
+				CEA08E55283F9173001375DA /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

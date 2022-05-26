@@ -31,7 +31,7 @@ final class StockCell: UITableViewCell {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = "AMZN"
-        lbl.font = UIFont(name: "Montserrat-Bold", size: 18)
+        lbl.font = UIFont.customFont(name: .moserratBold, size: 18)
         lbl.textColor = .black
         return lbl
     }()
@@ -40,7 +40,7 @@ final class StockCell: UITableViewCell {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = "Amazon.com"
-        lbl.font = UIFont(name: "Montserrat-Medium", size: 12)
+        lbl.font = UIFont.customFont(name: .moserratMedium, size: 12)
         lbl.textColor = .black
         return lbl
     }()
@@ -57,14 +57,12 @@ final class StockCell: UITableViewCell {
     private lazy var textView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.clipsToBounds = true
         return view
     }()
     
     private lazy var priceView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.clipsToBounds = true
         return view
     }()
     
@@ -73,7 +71,7 @@ final class StockCell: UITableViewCell {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = "$131.93"
         lbl.textAlignment = .center
-        lbl.font = UIFont(name: "Montserrat-Bold", size: 18)
+        lbl.font = UIFont.customFont(name: .moserratBold, size: 18)
         lbl.textColor = .black
         return lbl
     }()
@@ -83,8 +81,8 @@ final class StockCell: UITableViewCell {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = "+$0.12 (1,15%)"
         lbl.textAlignment = .center
-        lbl.font = UIFont(name: "Montserrat-Medium", size: 12)
-        lbl.textColor = UIColor(red: 36/255, green: 178/255, blue: 93/255, alpha: 1)
+        lbl.font = UIFont.customFont(name: .moserratMedium, size: 12)
+        lbl.textColor = .stocksDeltaGreen
         return lbl
     }()
 
@@ -98,9 +96,7 @@ final class StockCell: UITableViewCell {
     }
     
     func setBackgroundColor(for row: Int) {
-            backView.backgroundColor = row % 2 == 0 ?
-        UIColor(red: 240/255, green: 244/255, blue: 247/255, alpha: 1) :
-        UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        backView.backgroundColor = row % 2 == 0 ? UIColor.stocksGrey : UIColor.stocksWhite
     }
     
     private func setupSubview() {
@@ -110,24 +106,22 @@ final class StockCell: UITableViewCell {
     }
     
     private func setupCellViews() {
-        [backView].forEach { view in
-            contentView.addSubview(view)
-        }
+        contentView.addSubview(backView)
         
         [iconView, textView, priceView].forEach { view in
             backView.addSubview(view)
         }
         
         backView.snp.makeConstraints { make in
-            make.leading.equalTo(contentView.snp.leading)
-            make.trailing.equalTo(contentView.snp.trailing)
+            make.left.equalTo(contentView.snp.left)
+            make.right.equalTo(contentView.snp.right)
             make.top.equalTo(contentView.snp.top)
             make.bottom.equalTo(contentView.snp.bottom).offset(-8)
         }
         
         iconView.snp.makeConstraints { make in
             make.top.equalTo(backView.snp.top).offset(8)
-            make.leading.equalTo(backView.snp.leading).offset(8)
+            make.left.equalTo(backView.snp.left).offset(8)
             make.bottom.equalTo(backView.snp.bottom).offset(-8)
             make.height.width.equalTo(52)
         }

@@ -31,20 +31,15 @@ final class StocksViewController: UIViewController {
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
-            make.trailing.equalTo(view.snp.trailing).offset(-16)
-            make.leading.equalTo(view.snp.leading).offset(16)
+            make.right.equalTo(view.snp.right).offset(-16)
+            make.left.equalTo(view.snp.left).offset(16)
             make.top.equalTo(view.snp.top)
             make.bottom.equalTo(view.snp.bottom)
         }
     }
 }
 
-extension StocksViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 8
-    }
-    
+extension StocksViewController: UITableViewDelegate {    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         headerView.backgroundColor = UIColor.clear
@@ -64,11 +59,5 @@ extension StocksViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         30
-    }
-}
-
-extension NSObject {
-    static var typeName: String {
-        String(describing: self)
     }
 }
