@@ -15,12 +15,14 @@ final class StocksViewController: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(StockCell.self, forCellReuseIdentifier: StockCell.typeName)
         table.separatorStyle = .none
+        table.showsVerticalScrollIndicator = false
         return table
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .purple
+        view.backgroundColor = .white
+        tableView.delegate = self
         tableView.dataSource = self
         setupSubviews()
     }
@@ -29,11 +31,19 @@ final class StocksViewController: UIViewController {
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
-            make.trailing.equalTo(view.snp.trailing).offset(-16)
-            make.leading.equalTo(view.snp.leading).offset(16)
+            make.right.equalTo(view.snp.right).offset(-16)
+            make.left.equalTo(view.snp.left).offset(16)
             make.top.equalTo(view.snp.top)
             make.bottom.equalTo(view.snp.bottom)
         }
+    }
+}
+
+extension StocksViewController: UITableViewDelegate {    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
 }
 
@@ -41,16 +51,13 @@ extension StocksViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.typeName, for: indexPath) as! StockCell
+        cell.setBackgroundColor(for: indexPath.row)
+        cell.selectionStyle = .none
         
         return cell
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         30
-    }
-}
-
-extension NSObject {
-    static var typeName: String {
-        String(describing: self)
     }
 }
