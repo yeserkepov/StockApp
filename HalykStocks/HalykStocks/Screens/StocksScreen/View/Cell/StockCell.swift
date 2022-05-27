@@ -76,10 +76,20 @@ final class StockCell: UITableViewCell {
         return lbl
     }()
     
-    private lazy var dayDelta: UILabel = {
+    private lazy var dayDeltaChange: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.text = "+$0.12 (1,15%)"
+        lbl.text = "+$0.12"
+        lbl.textAlignment = .center
+        lbl.font = UIFont.customFont(name: .moserratMedium, size: 12)
+        lbl.textColor = .stocksDeltaGreen
+        return lbl
+    }()
+    
+    private lazy var dayDeltaPercentage: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.text = "(1,15%)"
         lbl.textAlignment = .center
         lbl.font = UIFont.customFont(name: .moserratMedium, size: 12)
         lbl.textColor = .stocksDeltaGreen
@@ -98,7 +108,6 @@ final class StockCell: UITableViewCell {
     func setBackgroundColor(for row: Int) {
         backView.backgroundColor = row % 2 == 0 ? UIColor.stocksGrey : UIColor.stocksWhite
     }
-
     
     func configure(with stocks: Stock) {
         symbolLabel.text = stocks.symbol.uppercased()
@@ -106,11 +115,15 @@ final class StockCell: UITableViewCell {
         currentPrice.text = Double.checkDecimal(check: stocks.price)
         
         if stocks.change >= 0.0 {
-            dayDelta.text = Double.checkDecimal(check: stocks.change)
-            dayDelta.textColor = .stocksDeltaGreen
+            dayDeltaChange.text = Double.checkDecimal(check: stocks.change)
+            dayDeltaChange.textColor = .stocksDeltaGreen
+            dayDeltaPercentage.text = Double.checkDecimalPerc(check: stocks.changePercentage)
+            dayDeltaPercentage.textColor = .stocksDeltaGreen
         } else {
-            dayDelta.text = Double.checkDecimal(check: stocks.change)
-            dayDelta.textColor = .stocksDeltaRed
+            dayDeltaChange.text = Double.checkDecimal(check: stocks.change)
+            dayDeltaChange.textColor = .stocksDeltaRed
+            dayDeltaPercentage.text = Double.checkDecimalPerc(check: stocks.changePercentage)
+            dayDeltaPercentage.textColor = .stocksDeltaRed
         }
     }
     
@@ -178,7 +191,7 @@ final class StockCell: UITableViewCell {
     }
     
     private func setupPriceView() {
-        [currentPrice, dayDelta].forEach { view in
+        [currentPrice, dayDeltaChange, dayDeltaPercentage].forEach { view in
             priceView.addSubview(view)
         }
         
@@ -189,9 +202,16 @@ final class StockCell: UITableViewCell {
             make.top.equalTo(priceView.snp.top)
         }
         
-        dayDelta.snp.makeConstraints { make in
-            make.centerX.equalTo(priceView.snp.centerX)
+        dayDeltaChange.snp.makeConstraints { make in
+            
             make.left.equalTo(priceView.snp.left)
+            make.right.equalTo(dayDeltaPercentage.snp.left).offset(-5)
+            make.bottom.equalTo(priceView.snp.bottom)
+        }
+        
+        dayDeltaPercentage.snp.makeConstraints { make in
+            
+            make.left.equalTo(dayDeltaChange.snp.right)
             make.right.equalTo(priceView.snp.right)
             make.bottom.equalTo(priceView.snp.bottom)
         }

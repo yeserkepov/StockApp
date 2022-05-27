@@ -57,6 +57,17 @@ extension Double {
         }
         return res
     }
+    
+    static func checkDecimalPerc(check: Double?) -> String {
+        let res: String
+        guard let value = check else { return "" }
+        if value.truncatingRemainder(dividingBy: 1) == 0 {
+            res = "\(Int(value))"
+        } else {
+            res = "\(ceil(value * 10000) / 10000)"
+        }
+        return "\(res) %"
+    }
 
 }
 

@@ -80,7 +80,7 @@ extension StocksViewController: UITableViewDataSource {
         vc.price = data.price
         vc.delta = data.change
         vc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: false)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
