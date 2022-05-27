@@ -10,13 +10,11 @@ enum CustomFont: String {
     case moserratMedium = "Montserrat-Medium"
 }
 
-import Foundation
 import UIKit
 
 extension UIFont {
     static func customFont(name: CustomFont, size: CGFloat) -> UIFont {
-        let font = UIFont(name: name.rawValue, size: size)
-        return font ?? UIFont.systemFont(ofSize: size)
+        UIFont(name: name.rawValue, size: size) ?? UIFont.systemFont(ofSize: size)
     }
 }
 
