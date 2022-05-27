@@ -28,6 +28,16 @@
 		CEA08E3F283DF8EC001375DA /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEA08E2B283DF8EC001375DA /* Montserrat-SemiBoldItalic.ttf */; };
 		CEA08E40283DF8EC001375DA /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEA08E2C283DF8EC001375DA /* Montserrat-ExtraBoldItalic.ttf */; };
 		CEA08E55283F9173001375DA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E54283F9173001375DA /* Extensions.swift */; };
+		CEA08E632840749B001375DA /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E5F2840749B001375DA /* HTTPMethod.swift */; };
+		CEA08E642840749B001375DA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E602840749B001375DA /* Router.swift */; };
+		CEA08E652840749B001375DA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E612840749B001375DA /* NetworkService.swift */; };
+		CEA08E662840749B001375DA /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E622840749B001375DA /* NetworkError.swift */; };
+		CEA08E69284076AE001375DA /* StocksServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E68284076AE001375DA /* StocksServices.swift */; };
+		CEA08E6B28407BDE001375DA /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E6A28407BDE001375DA /* Stock.swift */; };
+		CEA08E6E2840C883001375DA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E6D2840C883001375DA /* MainTabBarController.swift */; };
+		CEA08E742840D2CA001375DA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E732840D2CA001375DA /* SearchViewController.swift */; };
+		CEA08E762840D2D7001375DA /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E752840D2D7001375DA /* FavoriteViewController.swift */; };
+		CEA08E792840D5D0001375DA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E782840D5D0001375DA /* DetailsViewController.swift */; };
 		CEA3866D283D3F6A0061FCF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA3866C283D3F6A0061FCF0 /* AppDelegate.swift */; };
 		CEA38671283D3F6A0061FCF0 /* StocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA38670283D3F6A0061FCF0 /* StocksViewController.swift */; };
 		CEA38676283D3F6D0061FCF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA38675283D3F6D0061FCF0 /* Assets.xcassets */; };
@@ -58,6 +68,16 @@
 		CEA08E2B283DF8EC001375DA /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		CEA08E2C283DF8EC001375DA /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		CEA08E54283F9173001375DA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CEA08E5F2840749B001375DA /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		CEA08E602840749B001375DA /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		CEA08E612840749B001375DA /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		CEA08E622840749B001375DA /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		CEA08E68284076AE001375DA /* StocksServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksServices.swift; sourceTree = "<group>"; };
+		CEA08E6A28407BDE001375DA /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		CEA08E6D2840C883001375DA /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		CEA08E732840D2CA001375DA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CEA08E752840D2D7001375DA /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		CEA08E782840D5D0001375DA /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		CEA38669283D3F6A0061FCF0 /* HalykStocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HalykStocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA3866C283D3F6A0061FCF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA38670283D3F6A0061FCF0 /* StocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksViewController.swift; sourceTree = "<group>"; };
@@ -90,9 +110,9 @@
 		CEA08E17283DF78A001375DA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CEA08E54283F9173001375DA /* Extensions.swift */,
 				CEA38675283D3F6D0061FCF0 /* Assets.xcassets */,
 				CEA08E18283DF8EB001375DA /* Montserrat */,
-				CEA08E54283F9173001375DA /* Extensions.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -122,6 +142,120 @@
 			path = Montserrat;
 			sourceTree = "<group>";
 		};
+		CEA08E57284073D6001375DA /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E6C2840C816001375DA /* MainTabBar */,
+				CEA08E58284073D6001375DA /* StocksScreen */,
+				CEA08E772840D36E001375DA /* DetailsSreenn */,
+				CEA08E722840D291001375DA /* FavoriteScreen */,
+				CEA08E702840D261001375DA /* SearchScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		CEA08E58284073D6001375DA /* StocksScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E6728407691001375DA /* Services */,
+				CEA08E5B28407400001375DA /* View */,
+				CEA08E59284073D6001375DA /* Presenter */,
+				CEA08E5A284073D6001375DA /* Model */,
+			);
+			path = StocksScreen;
+			sourceTree = "<group>";
+		};
+		CEA08E59284073D6001375DA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CEA08E5A284073D6001375DA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E6A28407BDE001375DA /* Stock.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CEA08E5B28407400001375DA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEA38670283D3F6A0061FCF0 /* StocksViewController.swift */,
+				CEA08E5C2840740D001375DA /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEA08E5C2840740D001375DA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E15283D4462001375DA /* StockCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		CEA08E5D2840745A001375DA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E5E2840746A001375DA /* NetworkService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CEA08E5E2840746A001375DA /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E5F2840749B001375DA /* HTTPMethod.swift */,
+				CEA08E622840749B001375DA /* NetworkError.swift */,
+				CEA08E612840749B001375DA /* NetworkService.swift */,
+				CEA08E602840749B001375DA /* Router.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		CEA08E6728407691001375DA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E68284076AE001375DA /* StocksServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CEA08E6C2840C816001375DA /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E6D2840C883001375DA /* MainTabBarController.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		CEA08E702840D261001375DA /* SearchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E732840D2CA001375DA /* SearchViewController.swift */,
+			);
+			path = SearchScreen;
+			sourceTree = "<group>";
+		};
+		CEA08E722840D291001375DA /* FavoriteScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E752840D2D7001375DA /* FavoriteViewController.swift */,
+			);
+			path = FavoriteScreen;
+			sourceTree = "<group>";
+		};
+		CEA08E772840D36E001375DA /* DetailsSreenn */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E782840D5D0001375DA /* DetailsViewController.swift */,
+			);
+			path = DetailsSreenn;
+			sourceTree = "<group>";
+		};
 		CEA38660283D3F6A0061FCF0 = {
 			isa = PBXGroup;
 			children = (
@@ -143,12 +277,12 @@
 		CEA3866B283D3F6A0061FCF0 /* HalykStocks */ = {
 			isa = PBXGroup;
 			children = (
-				CEA08E17283DF78A001375DA /* Supporting Files */,
+				CEA08E57284073D6001375DA /* Screens */,
 				CEA3866C283D3F6A0061FCF0 /* AppDelegate.swift */,
-				CEA38670283D3F6A0061FCF0 /* StocksViewController.swift */,
-				CEA08E15283D4462001375DA /* StockCell.swift */,
 				CEA38677283D3F6D0061FCF0 /* LaunchScreen.storyboard */,
 				CEA3867A283D3F6D0061FCF0 /* Info.plist */,
+				CEA08E5D2840745A001375DA /* Services */,
+				CEA08E17283DF78A001375DA /* Supporting Files */,
 			);
 			path = HalykStocks;
 			sourceTree = "<group>";
@@ -294,9 +428,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEA38671283D3F6A0061FCF0 /* StocksViewController.swift in Sources */,
+				CEA08E6E2840C883001375DA /* MainTabBarController.swift in Sources */,
+				CEA08E69284076AE001375DA /* StocksServices.swift in Sources */,
+				CEA08E662840749B001375DA /* NetworkError.swift in Sources */,
 				CEA3866D283D3F6A0061FCF0 /* AppDelegate.swift in Sources */,
 				CEA08E16283D4462001375DA /* StockCell.swift in Sources */,
+				CEA08E742840D2CA001375DA /* SearchViewController.swift in Sources */,
+				CEA08E632840749B001375DA /* HTTPMethod.swift in Sources */,
+				CEA08E642840749B001375DA /* Router.swift in Sources */,
+				CEA08E762840D2D7001375DA /* FavoriteViewController.swift in Sources */,
 				CEA08E55283F9173001375DA /* Extensions.swift in Sources */,
+				CEA08E792840D5D0001375DA /* DetailsViewController.swift in Sources */,
+				CEA08E6B28407BDE001375DA /* Stock.swift in Sources */,
+				CEA08E652840749B001375DA /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

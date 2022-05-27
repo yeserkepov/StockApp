@@ -98,6 +98,21 @@ final class StockCell: UITableViewCell {
     func setBackgroundColor(for row: Int) {
         backView.backgroundColor = row % 2 == 0 ? UIColor.stocksGrey : UIColor.stocksWhite
     }
+
+    
+    func configure(with stocks: Stock) {
+        symbolLabel.text = stocks.symbol.uppercased()
+        companyLabel.text = stocks.name
+        currentPrice.text = Double.checkDecimal(check: stocks.price)
+        
+        if stocks.change >= 0.0 {
+            dayDelta.text = Double.checkDecimal(check: stocks.change)
+            dayDelta.textColor = .stocksDeltaGreen
+        } else {
+            dayDelta.text = Double.checkDecimal(check: stocks.change)
+            dayDelta.textColor = .stocksDeltaRed
+        }
+    }
     
     private func setupSubview() {
         setupCellViews()
