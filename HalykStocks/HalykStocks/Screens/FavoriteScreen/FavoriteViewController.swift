@@ -12,7 +12,14 @@ class FavoriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupView()
+    }
+    
+    private func setupView() {
         view.backgroundColor = .cyan
+        title = "Favorite"
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
 }

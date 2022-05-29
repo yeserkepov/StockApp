@@ -9,11 +9,21 @@ import UIKit
 import SnapKit
 
 final class StocksViewController: UIViewController {
+    private let presenter: StocksPresenterProtocol
     
-    private var stocks: [Stock] = []
+    init(presenter: StocksPresenterProtocol) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     lazy var tableView: UITableView = {
         let table = UITableView()
+        table.delegate = self
+        table.dataSource = self
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(StockCell.self, forCellReuseIdentifier: StockCell.typeName)
         table.separatorStyle = .none
@@ -23,12 +33,17 @@ final class StocksViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        tableView.delegate = self
-        tableView.dataSource = self
+        setupView()
         setupSubviews()
         
-        getStocks()
+        presenter.loadView()
+    }
+    
+    private func setupView() {
+        view.backgroundColor = .white
+        title = "Stocks"
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func setupSubviews() {
@@ -42,23 +57,20 @@ final class StocksViewController: UIViewController {
         }
     }
     
-    private func getStocks() {
-        let client = Network()
-        let service: StocksServicesProtocol = StocksService(client: client)
-        
-        service.getStocks { [weak self] result in
-            switch result {
-            case .success(let stocks):
-                self?.stocks = stocks
-                self?.tableView.reloadData()
-            case .failure(let error):
-                self?.showError(error)
-            }
-        }
-    }
-    
     private func showError(_ message: Error) {
         print(message.localizedDescription)
+    }
+}
+
+extension StocksViewController: StocksViewProtocol {
+    func updateView() {
+        tableView.reloadData()
+    }
+    
+    func updateView(withLoader isLoading: Bool) {
+    }
+    
+    func updateView(withError message: String) {
     }
 }
 
@@ -72,27 +84,27 @@ extension StocksViewController: UITableViewDelegate {
 
 extension StocksViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = stocks[indexPath.row]
-        let vc = DetailsViewController()
-        vc.symbol = data.symbol
-        vc.name = data.name
-        vc.price = data.price
-        vc.delta = data.change
-        vc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let data = presenter.model(for: indexPath)
+//        let vc = DetailsViewController()
+//        vc.symbol = data.symbol
+//        vc.name = data.name
+//        vc.price = data.price
+//        vc.delta = data.change
+//        vc.hidesBottomBarWhenPushed = true
+//        self.navigationController?.pushViewController(vc, animated: true)
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.typeName, for: indexPath) as! StockCell
         cell.setBackgroundColor(for: indexPath.row)
         cell.selectionStyle = .none
-        cell.configure(with: stocks[indexPath.row])
+        cell.configure(with: presenter.model(for: indexPath))
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        stocks.count
+        presenter.stocksCount
     }
 }

@@ -109,22 +109,16 @@ final class StockCell: UITableViewCell {
         backView.backgroundColor = row % 2 == 0 ? UIColor.stocksGrey : UIColor.stocksWhite
     }
     
-    func configure(with stocks: Stock) {
-        symbolLabel.text = stocks.symbol.uppercased()
+    func configure(with stocks: StockModelProtocol) {
+        symbolLabel.text = stocks.symbol
         companyLabel.text = stocks.name
-        currentPrice.text = Double.checkDecimal(check: stocks.price)
-        
-        if stocks.change >= 0.0 {
-            dayDeltaChange.text = Double.checkDecimal(check: stocks.change)
-            dayDeltaChange.textColor = .stocksDeltaGreen
-            dayDeltaPercentage.text = Double.checkDecimalPerc(check: stocks.changePercentage)
-            dayDeltaPercentage.textColor = .stocksDeltaGreen
-        } else {
-            dayDeltaChange.text = Double.checkDecimal(check: stocks.change)
-            dayDeltaChange.textColor = .stocksDeltaRed
-            dayDeltaPercentage.text = Double.checkDecimalPerc(check: stocks.changePercentage)
-            dayDeltaPercentage.textColor = .stocksDeltaRed
-        }
+        currentPrice.text = stocks.price
+
+        dayDeltaChange.text = stocks.change
+        dayDeltaPercentage.text = stocks.changePercentage
+            
+        dayDeltaChange.textColor = stocks.changeColor
+        dayDeltaPercentage.textColor = stocks.changeColor
     }
     
     private func setupSubview() {
@@ -196,8 +190,8 @@ final class StockCell: UITableViewCell {
         }
         
         currentPrice.snp.makeConstraints { make in
-            make.centerX.equalTo(priceView.snp.centerX)
-            make.left.equalTo(priceView.snp.left)
+//            make.centerX.equalTo(priceView.snp.centerX)
+//            make.left.equalTo(priceView.snp.left)
             make.right.equalTo(priceView.snp.right)
             make.top.equalTo(priceView.snp.top)
         }

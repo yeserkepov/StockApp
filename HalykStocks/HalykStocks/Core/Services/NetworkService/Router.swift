@@ -1,9 +1,3 @@
-//
-//  Router.swift
-//  StocksApp
-//
-//  Created by Aimukhambetov Zhassulan on 25.05.2022.
-//
 
 import Foundation
 

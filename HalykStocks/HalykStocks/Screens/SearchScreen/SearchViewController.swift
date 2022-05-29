@@ -12,7 +12,13 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .orange
+        setupView()
     }
 
+    private func setupView() {
+        view.backgroundColor = .orange
+        title = "Search"
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
 }

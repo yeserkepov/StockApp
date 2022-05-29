@@ -9,11 +9,12 @@ import UIKit
 import SnapKit
 
 final class DetailsViewController: UIViewController {
+    //private let presenter: DetailsPresenterProtocol
     
     var symbol: String?
     var name: String?
-    var price: Double?
-    var delta: Double?
+    var price: String?
+    var delta: String?
     
     private lazy var favorite: UIImageView = {
         let image = UIImageView()
@@ -62,18 +63,19 @@ final class DetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        stockSymbol.text = symbol?.uppercased()
-        companyLabel.text = name
-        
-        currentPrice.text = Double.checkDecimal(check: price)
-        dayDelta.text = Double.checkDecimal(check: delta)
-        
-        view.backgroundColor = .white
-        setup()
+        setupView()
+        setupSubviews()
     }
     
-    private func setup() {
+    private func setupView() {
+        stockSymbol.text = symbol?.uppercased()
+        companyLabel.text = name
+        currentPrice.text = price
+        dayDelta.text = delta
+        view.backgroundColor = .white
+    }
+    
+    private func setupSubviews() {
         [stockSymbol, companyLabel, currentPrice, dayDelta, favorite].forEach {
             view.addSubview($0)
         }
@@ -105,3 +107,7 @@ final class DetailsViewController: UIViewController {
         }
     }
 }
+
+//extension DetailsViewController: {
+//
+//}

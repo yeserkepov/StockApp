@@ -27,17 +27,23 @@
 		CEA08E3D283DF8EC001375DA /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEA08E29283DF8EC001375DA /* Montserrat-Italic.ttf */; };
 		CEA08E3F283DF8EC001375DA /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEA08E2B283DF8EC001375DA /* Montserrat-SemiBoldItalic.ttf */; };
 		CEA08E40283DF8EC001375DA /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEA08E2C283DF8EC001375DA /* Montserrat-ExtraBoldItalic.ttf */; };
-		CEA08E55283F9173001375DA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E54283F9173001375DA /* Extensions.swift */; };
+		CEA08E55283F9173001375DA /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E54283F9173001375DA /* UIColor+Ext.swift */; };
 		CEA08E632840749B001375DA /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E5F2840749B001375DA /* HTTPMethod.swift */; };
 		CEA08E642840749B001375DA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E602840749B001375DA /* Router.swift */; };
 		CEA08E652840749B001375DA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E612840749B001375DA /* NetworkService.swift */; };
 		CEA08E662840749B001375DA /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E622840749B001375DA /* NetworkError.swift */; };
 		CEA08E69284076AE001375DA /* StocksServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E68284076AE001375DA /* StocksServices.swift */; };
-		CEA08E6B28407BDE001375DA /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E6A28407BDE001375DA /* Stock.swift */; };
-		CEA08E6E2840C883001375DA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E6D2840C883001375DA /* MainTabBarController.swift */; };
+		CEA08E6B28407BDE001375DA /* StockResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E6A28407BDE001375DA /* StockResponse.swift */; };
 		CEA08E742840D2CA001375DA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E732840D2CA001375DA /* SearchViewController.swift */; };
 		CEA08E762840D2D7001375DA /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E752840D2D7001375DA /* FavoriteViewController.swift */; };
 		CEA08E792840D5D0001375DA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E782840D5D0001375DA /* DetailsViewController.swift */; };
+		CEA08E7C28421A8C001375DA /* StockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E7B28421A8C001375DA /* StockPresenter.swift */; };
+		CEA08E8528422DD0001375DA /* NSObject+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E8428422DD0001375DA /* NSObject+Ext.swift */; };
+		CEA08E8728422DF6001375DA /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E8628422DF6001375DA /* UIFont+Ext.swift */; };
+		CEA08E8928422E53001375DA /* Numeric+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E8828422E53001375DA /* Numeric+Ext.swift */; };
+		CEA08E8B28422EF4001375DA /* StockRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E8A28422EF4001375DA /* StockRouter.swift */; };
+		CEA08E8D28422F4E001375DA /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E8C28422F4E001375DA /* StockModel.swift */; };
+		CEA08E8F28429B5D001375DA /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E8E28429B5C001375DA /* ModuleBuilder.swift */; };
 		CEA3866D283D3F6A0061FCF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA3866C283D3F6A0061FCF0 /* AppDelegate.swift */; };
 		CEA38671283D3F6A0061FCF0 /* StocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA38670283D3F6A0061FCF0 /* StocksViewController.swift */; };
 		CEA38676283D3F6D0061FCF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA38675283D3F6D0061FCF0 /* Assets.xcassets */; };
@@ -67,17 +73,28 @@
 		CEA08E29283DF8EC001375DA /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		CEA08E2B283DF8EC001375DA /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		CEA08E2C283DF8EC001375DA /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		CEA08E54283F9173001375DA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CEA08E54283F9173001375DA /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		CEA08E5F2840749B001375DA /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		CEA08E602840749B001375DA /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		CEA08E612840749B001375DA /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		CEA08E622840749B001375DA /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		CEA08E68284076AE001375DA /* StocksServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksServices.swift; sourceTree = "<group>"; };
-		CEA08E6A28407BDE001375DA /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
-		CEA08E6D2840C883001375DA /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		CEA08E6A28407BDE001375DA /* StockResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockResponse.swift; sourceTree = "<group>"; };
 		CEA08E732840D2CA001375DA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CEA08E752840D2D7001375DA /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		CEA08E782840D5D0001375DA /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		CEA08E7B28421A8C001375DA /* StockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPresenter.swift; sourceTree = "<group>"; };
+		CEA08E8428422DD0001375DA /* NSObject+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Ext.swift"; sourceTree = "<group>"; };
+		CEA08E8628422DF6001375DA /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
+		CEA08E8828422E53001375DA /* Numeric+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+Ext.swift"; sourceTree = "<group>"; };
+		CEA08E8A28422EF4001375DA /* StockRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRouter.swift; sourceTree = "<group>"; };
+		CEA08E8C28422F4E001375DA /* StockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockModel.swift; sourceTree = "<group>"; };
+		CEA08E8E28429B5C001375DA /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		CEA08E9428433434001375DA /* DetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsResponse.swift; sourceTree = "<group>"; };
+		CEA08E9528433434001375DA /* DetailsServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsServices.swift; sourceTree = "<group>"; };
+		CEA08E9628433434001375DA /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
+		CEA08E9728433EA7001375DA /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
+		CEA08E9828433F66001375DA /* StockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPresenter.swift; sourceTree = "<group>"; };
 		CEA38669283D3F6A0061FCF0 /* HalykStocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HalykStocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA3866C283D3F6A0061FCF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA38670283D3F6A0061FCF0 /* StocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksViewController.swift; sourceTree = "<group>"; };
@@ -105,16 +122,6 @@
 				4111A3048424DC3059F74FA6 /* Pods-HalykStocks.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		CEA08E17283DF78A001375DA /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CEA08E54283F9173001375DA /* Extensions.swift */,
-				CEA38675283D3F6D0061FCF0 /* Assets.xcassets */,
-				CEA08E18283DF8EB001375DA /* Montserrat */,
-			);
-			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		CEA08E18283DF8EB001375DA /* Montserrat */ = {
@@ -145,11 +152,10 @@
 		CEA08E57284073D6001375DA /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				CEA08E6C2840C816001375DA /* MainTabBar */,
 				CEA08E58284073D6001375DA /* StocksScreen */,
-				CEA08E772840D36E001375DA /* DetailsSreenn */,
 				CEA08E722840D291001375DA /* FavoriteScreen */,
 				CEA08E702840D261001375DA /* SearchScreen */,
+				CEA08E772840D36E001375DA /* DetailsSreenn */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -157,9 +163,9 @@
 		CEA08E58284073D6001375DA /* StocksScreen */ = {
 			isa = PBXGroup;
 			children = (
+				CEA08E59284073D6001375DA /* Presenter */,
 				CEA08E6728407691001375DA /* Services */,
 				CEA08E5B28407400001375DA /* View */,
-				CEA08E59284073D6001375DA /* Presenter */,
 				CEA08E5A284073D6001375DA /* Model */,
 			);
 			path = StocksScreen;
@@ -168,6 +174,7 @@
 		CEA08E59284073D6001375DA /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				CEA08E7B28421A8C001375DA /* StockPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -175,7 +182,7 @@
 		CEA08E5A284073D6001375DA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CEA08E6A28407BDE001375DA /* Stock.swift */,
+				CEA08E8C28422F4E001375DA /* StockModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -220,16 +227,10 @@
 			isa = PBXGroup;
 			children = (
 				CEA08E68284076AE001375DA /* StocksServices.swift */,
+				CEA08E8A28422EF4001375DA /* StockRouter.swift */,
+				CEA08E6A28407BDE001375DA /* StockResponse.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		CEA08E6C2840C816001375DA /* MainTabBar */ = {
-			isa = PBXGroup;
-			children = (
-				CEA08E6D2840C883001375DA /* MainTabBarController.swift */,
-			);
-			path = MainTabBar;
 			sourceTree = "<group>";
 		};
 		CEA08E702840D261001375DA /* SearchScreen */ = {
@@ -251,9 +252,94 @@
 		CEA08E772840D36E001375DA /* DetailsSreenn */ = {
 			isa = PBXGroup;
 			children = (
-				CEA08E782840D5D0001375DA /* DetailsViewController.swift */,
+				CEA08E90284333E4001375DA /* Presenter */,
+				CEA08E91284333EF001375DA /* Services */,
+				CEA08E92284333F6001375DA /* View */,
+				CEA08E93284333FB001375DA /* Model */,
 			);
 			path = DetailsSreenn;
+			sourceTree = "<group>";
+		};
+		CEA08E7D28422A53001375DA /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				CEA3866C283D3F6A0061FCF0 /* AppDelegate.swift */,
+				CEA38677283D3F6D0061FCF0 /* LaunchScreen.storyboard */,
+				CEA3867A283D3F6D0061FCF0 /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		CEA08E7F28422D27001375DA /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E8228422DAF001375DA /* Extensions */,
+				CEA08E5D2840745A001375DA /* Services */,
+				CEA08E8E28429B5C001375DA /* ModuleBuilder.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		CEA08E8028422D5D001375DA /* Resoures */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E8128422D6D001375DA /* Fonts */,
+				CEA38675283D3F6D0061FCF0 /* Assets.xcassets */,
+			);
+			path = Resoures;
+			sourceTree = "<group>";
+		};
+		CEA08E8128422D6D001375DA /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E18283DF8EB001375DA /* Montserrat */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		CEA08E8228422DAF001375DA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E54283F9173001375DA /* UIColor+Ext.swift */,
+				CEA08E8428422DD0001375DA /* NSObject+Ext.swift */,
+				CEA08E8628422DF6001375DA /* UIFont+Ext.swift */,
+				CEA08E8828422E53001375DA /* Numeric+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CEA08E90284333E4001375DA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E9828433F66001375DA /* StockPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CEA08E91284333EF001375DA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E9528433434001375DA /* DetailsServices.swift */,
+				CEA08E9628433434001375DA /* DetailsRouter.swift */,
+				CEA08E9428433434001375DA /* DetailsResponse.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CEA08E92284333F6001375DA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E782840D5D0001375DA /* DetailsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEA08E93284333FB001375DA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E9728433EA7001375DA /* DetailModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CEA38660283D3F6A0061FCF0 = {
@@ -277,12 +363,10 @@
 		CEA3866B283D3F6A0061FCF0 /* HalykStocks */ = {
 			isa = PBXGroup;
 			children = (
+				CEA08E7D28422A53001375DA /* Application */,
+				CEA08E7F28422D27001375DA /* Core */,
 				CEA08E57284073D6001375DA /* Screens */,
-				CEA3866C283D3F6A0061FCF0 /* AppDelegate.swift */,
-				CEA38677283D3F6D0061FCF0 /* LaunchScreen.storyboard */,
-				CEA3867A283D3F6D0061FCF0 /* Info.plist */,
-				CEA08E5D2840745A001375DA /* Services */,
-				CEA08E17283DF78A001375DA /* Supporting Files */,
+				CEA08E8028422D5D001375DA /* Resoures */,
 			);
 			path = HalykStocks;
 			sourceTree = "<group>";
@@ -428,18 +512,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEA38671283D3F6A0061FCF0 /* StocksViewController.swift in Sources */,
-				CEA08E6E2840C883001375DA /* MainTabBarController.swift in Sources */,
+				CEA08E8928422E53001375DA /* Numeric+Ext.swift in Sources */,
+				CEA08E8528422DD0001375DA /* NSObject+Ext.swift in Sources */,
 				CEA08E69284076AE001375DA /* StocksServices.swift in Sources */,
 				CEA08E662840749B001375DA /* NetworkError.swift in Sources */,
 				CEA3866D283D3F6A0061FCF0 /* AppDelegate.swift in Sources */,
 				CEA08E16283D4462001375DA /* StockCell.swift in Sources */,
+				CEA08E8728422DF6001375DA /* UIFont+Ext.swift in Sources */,
 				CEA08E742840D2CA001375DA /* SearchViewController.swift in Sources */,
+				CEA08E7C28421A8C001375DA /* StockPresenter.swift in Sources */,
+				CEA08E8F28429B5D001375DA /* ModuleBuilder.swift in Sources */,
 				CEA08E632840749B001375DA /* HTTPMethod.swift in Sources */,
 				CEA08E642840749B001375DA /* Router.swift in Sources */,
 				CEA08E762840D2D7001375DA /* FavoriteViewController.swift in Sources */,
-				CEA08E55283F9173001375DA /* Extensions.swift in Sources */,
+				CEA08E8B28422EF4001375DA /* StockRouter.swift in Sources */,
+				CEA08E55283F9173001375DA /* UIColor+Ext.swift in Sources */,
+				CEA08E8D28422F4E001375DA /* StockModel.swift in Sources */,
 				CEA08E792840D5D0001375DA /* DetailsViewController.swift in Sources */,
-				CEA08E6B28407BDE001375DA /* Stock.swift in Sources */,
+				CEA08E6B28407BDE001375DA /* StockResponse.swift in Sources */,
 				CEA08E652840749B001375DA /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,7 +672,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WPGA7ZMN23;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HalykStocks/Info.plist;
+				INFOPLIST_FILE = HalykStocks/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -610,7 +700,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WPGA7ZMN23;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HalykStocks/Info.plist;
+				INFOPLIST_FILE = HalykStocks/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
