@@ -24,10 +24,23 @@ final class ModuleBuilder {
         StocksService(client: network)
     }
     
+    private func detailsService() -> DetailsServicesProtocol {
+        DetailsService(client: network)
+    }
+    
     private func stocksModule() -> UIViewController {
         let presenter = StocksPresenter(service: stocksService())
         let view = StocksViewController(presenter: presenter)
         presenter.view = view
+        
+        return view
+    }
+    
+    func detailsModule() -> UIViewController {
+        let presenter = DetailsPresenter(service: detailsService())
+        let view = DetailsViewController(presenter: presenter)
+        presenter.view = view
+        view.hidesBottomBarWhenPushed = true
         
         return view
     }
@@ -39,6 +52,7 @@ final class ModuleBuilder {
         stocksVC.tabBarItem = UITabBarItem(title: "Stocks", image: UIImage(named: "stocks"), tag: 0)
         
         let searchVC = SearchViewController()
+        //let searchVC = detailsModule()
         searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "search"), tag: 1)
         
         let favoriteVC = FavoriteViewController()

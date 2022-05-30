@@ -5,11 +5,7 @@
 //  Created by Даурен on 28.05.2022.
 //
 
-//https://api.coingecko.com/api/v3/coins/%5BID%5D/market_chart?vs_currency=usd&days=600&interval=daily
-
-enum StockDetailsInterval {
-    case daily = "daily"
-}
+//https://api.coingecko.com/api/v3/coins/%5BID%5D/market_chart?vs_currency=usd&days=60&interval=daily
 
 import Foundation
 
@@ -23,14 +19,14 @@ enum DetailsRouter: Router {
     
     var path: String {
         switch self {
-        case .stocks:
+        case .stockDetails:
             return "/v3/coins/bitcoin/market_chart"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .stocks:
+        case .stockDetails:
             return .get
         }
     }

@@ -8,7 +8,11 @@
 import UIKit
 
 protocol DetailModelProtocol {
-    let prices: [[Double]] { get }
+    var prices: [[Double]] { get }
+    var marketCaps: [[Double]] { get }
+    var totalVolumes: [[Double]] { get }
+    
+//    var prices: [Price] { get }
 }
 
 final class DetailModel: DetailModelProtocol {
@@ -18,8 +22,19 @@ final class DetailModel: DetailModelProtocol {
         self.detail = detail
     }
     
-    var prices: String {
+    var prices: [[Double]] {
         detail.prices
     }
-    
+
+    var marketCaps: [[Double]] {
+        detail.marketCaps
+    }
+
+    var totalVolumes: [[Double]] {
+        detail.totalVolumes
+    }
+//
+//    var prices: [Price] {
+//        detail.prices
+//    }
 }

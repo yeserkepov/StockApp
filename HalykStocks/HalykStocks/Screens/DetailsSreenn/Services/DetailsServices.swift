@@ -20,14 +20,16 @@ final class DetailsService: DetailsServicesProtocol {
     }
     func getStockDetails(currency: String, days: String, interval: String, completion: @escaping(Result<[DetailsResponse], NetworkError>) -> Void) {
         client.execute(with: DetailsRouter.stockDetails(currency: currency, days: days, interval: interval), completion: completion)
+        
+        print(DetailsRouter.stockDetails(currency: currency, days: days, interval: interval))
     }
 }
 
 extension DetailsServicesProtocol {
     func getStockDetails(currency: String, completion: @escaping(Result<[DetailsResponse], NetworkError>) -> Void) {
-        getStockDetails(currency: currency, days: "600", interval: "daily", completion: completion)
+        getStockDetails(currency: currency, days: "60", interval: "daily", completion: completion)
     }
     func getStockDetails(completion: @escaping(Result<[DetailsResponse], NetworkError>) -> Void) {
-        getStockDetails(currency: "usd", days: "600", interval: "daily", completion: completion)
+        getStockDetails(currency: "usd", days: "60", interval: "daily", completion: completion)
     }
 }

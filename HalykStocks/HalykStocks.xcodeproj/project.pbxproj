@@ -44,6 +44,11 @@
 		CEA08E8B28422EF4001375DA /* StockRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E8A28422EF4001375DA /* StockRouter.swift */; };
 		CEA08E8D28422F4E001375DA /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E8C28422F4E001375DA /* StockModel.swift */; };
 		CEA08E8F28429B5D001375DA /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E8E28429B5C001375DA /* ModuleBuilder.swift */; };
+		CEA08E9928447437001375DA /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E9828433F66001375DA /* DetailsPresenter.swift */; };
+		CEA08E9A28447681001375DA /* DetailsServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E9528433434001375DA /* DetailsServices.swift */; };
+		CEA08E9B28447686001375DA /* DetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E9628433434001375DA /* DetailsRouter.swift */; };
+		CEA08E9C28447688001375DA /* DetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E9428433434001375DA /* DetailsResponse.swift */; };
+		CEA08E9D28447817001375DA /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E9728433EA7001375DA /* DetailModel.swift */; };
 		CEA3866D283D3F6A0061FCF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA3866C283D3F6A0061FCF0 /* AppDelegate.swift */; };
 		CEA38671283D3F6A0061FCF0 /* StocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA38670283D3F6A0061FCF0 /* StocksViewController.swift */; };
 		CEA38676283D3F6D0061FCF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA38675283D3F6D0061FCF0 /* Assets.xcassets */; };
@@ -94,7 +99,7 @@
 		CEA08E9528433434001375DA /* DetailsServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsServices.swift; sourceTree = "<group>"; };
 		CEA08E9628433434001375DA /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
 		CEA08E9728433EA7001375DA /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
-		CEA08E9828433F66001375DA /* StockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPresenter.swift; sourceTree = "<group>"; };
+		CEA08E9828433F66001375DA /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		CEA38669283D3F6A0061FCF0 /* HalykStocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HalykStocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA3866C283D3F6A0061FCF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA38670283D3F6A0061FCF0 /* StocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksViewController.swift; sourceTree = "<group>"; };
@@ -153,9 +158,9 @@
 			isa = PBXGroup;
 			children = (
 				CEA08E58284073D6001375DA /* StocksScreen */,
+				CEA08E772840D36E001375DA /* DetailsSreenn */,
 				CEA08E722840D291001375DA /* FavoriteScreen */,
 				CEA08E702840D261001375DA /* SearchScreen */,
-				CEA08E772840D36E001375DA /* DetailsSreenn */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -311,7 +316,7 @@
 		CEA08E90284333E4001375DA /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				CEA08E9828433F66001375DA /* StockPresenter.swift */,
+				CEA08E9828433F66001375DA /* DetailsPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -515,19 +520,24 @@
 				CEA08E8928422E53001375DA /* Numeric+Ext.swift in Sources */,
 				CEA08E8528422DD0001375DA /* NSObject+Ext.swift in Sources */,
 				CEA08E69284076AE001375DA /* StocksServices.swift in Sources */,
+				CEA08E9B28447686001375DA /* DetailsRouter.swift in Sources */,
+				CEA08E9C28447688001375DA /* DetailsResponse.swift in Sources */,
 				CEA08E662840749B001375DA /* NetworkError.swift in Sources */,
 				CEA3866D283D3F6A0061FCF0 /* AppDelegate.swift in Sources */,
 				CEA08E16283D4462001375DA /* StockCell.swift in Sources */,
 				CEA08E8728422DF6001375DA /* UIFont+Ext.swift in Sources */,
 				CEA08E742840D2CA001375DA /* SearchViewController.swift in Sources */,
 				CEA08E7C28421A8C001375DA /* StockPresenter.swift in Sources */,
+				CEA08E9A28447681001375DA /* DetailsServices.swift in Sources */,
 				CEA08E8F28429B5D001375DA /* ModuleBuilder.swift in Sources */,
 				CEA08E632840749B001375DA /* HTTPMethod.swift in Sources */,
 				CEA08E642840749B001375DA /* Router.swift in Sources */,
+				CEA08E9D28447817001375DA /* DetailModel.swift in Sources */,
 				CEA08E762840D2D7001375DA /* FavoriteViewController.swift in Sources */,
 				CEA08E8B28422EF4001375DA /* StockRouter.swift in Sources */,
 				CEA08E55283F9173001375DA /* UIColor+Ext.swift in Sources */,
 				CEA08E8D28422F4E001375DA /* StockModel.swift in Sources */,
+				CEA08E9928447437001375DA /* DetailsPresenter.swift in Sources */,
 				CEA08E792840D5D0001375DA /* DetailsViewController.swift in Sources */,
 				CEA08E6B28407BDE001375DA /* StockResponse.swift in Sources */,
 				CEA08E652840749B001375DA /* NetworkService.swift in Sources */,

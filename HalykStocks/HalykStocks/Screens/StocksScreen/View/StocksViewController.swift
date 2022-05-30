@@ -83,17 +83,10 @@ extension StocksViewController: UITableViewDelegate {
 }
 
 extension StocksViewController: UITableViewDataSource {
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let data = presenter.model(for: indexPath)
-//        let vc = DetailsViewController()
-//        vc.symbol = data.symbol
-//        vc.name = data.name
-//        vc.price = data.price
-//        vc.delta = data.change
-//        vc.hidesBottomBarWhenPushed = true
-//        self.navigationController?.pushViewController(vc, animated: true)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = ModuleBuilder.shared.detailsModule()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.typeName, for: indexPath) as! StockCell

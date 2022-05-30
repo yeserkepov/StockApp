@@ -204,8 +204,6 @@ final class StockCell: UITableViewCell {
         }
         
         dayDeltaPercentage.snp.makeConstraints { make in
-            
-            make.left.equalTo(dayDeltaChange.snp.right)
             make.right.equalTo(priceView.snp.right)
             make.bottom.equalTo(priceView.snp.bottom)
         }

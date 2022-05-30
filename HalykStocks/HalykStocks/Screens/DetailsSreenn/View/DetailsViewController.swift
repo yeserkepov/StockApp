@@ -9,14 +9,18 @@ import UIKit
 import SnapKit
 
 final class DetailsViewController: UIViewController {
-    //private let presenter: DetailsPresenterProtocol
+    private let presenter: DetailsPresenterProtocol
     
-    var symbol: String?
-    var name: String?
-    var price: String?
-    var delta: String?
+    init(presenter: DetailsPresenterProtocol) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
     
-    private lazy var favorite: UIImageView = {
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private lazy var favoriteView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
@@ -31,6 +35,7 @@ final class DetailsViewController: UIViewController {
         lbl.textAlignment = .center
         lbl.font = UIFont.customFont(name: .moserratBold, size: 24)
         lbl.textColor = .black
+        lbl.text = "BIT"
         return lbl
     }()
     
@@ -40,6 +45,7 @@ final class DetailsViewController: UIViewController {
         lbl.textAlignment = .center
         lbl.font = UIFont.customFont(name: .moserratMedium, size: 16)
         lbl.textColor = .black
+        lbl.text = "bit"
         return lbl
     }()
     
@@ -49,6 +55,7 @@ final class DetailsViewController: UIViewController {
         lbl.textAlignment = .center
         lbl.font = UIFont.customFont(name: .moserratBold, size: 32)
         lbl.textColor = .black
+        lbl.text = "124.11 $"
         return lbl
     }()
     
@@ -58,25 +65,33 @@ final class DetailsViewController: UIViewController {
         lbl.textAlignment = .center
         lbl.font = UIFont.customFont(name: .moserratMedium, size: 16)
         lbl.textColor = .black
+        lbl.text = "-12.3 %"
         return lbl
+    }()
+    
+    private lazy var chartView: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
+        image.clipsToBounds = true
+        image.image = UIImage(named: "launch")
+        return image
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupSubviews()
+        print("details VC")
+        presenter.loadView()
     }
     
     private func setupView() {
-        stockSymbol.text = symbol?.uppercased()
-        companyLabel.text = name
-        currentPrice.text = price
-        dayDelta.text = delta
         view.backgroundColor = .white
     }
     
     private func setupSubviews() {
-        [stockSymbol, companyLabel, currentPrice, dayDelta, favorite].forEach {
+        [stockSymbol, companyLabel, currentPrice, dayDelta, favoriteView, chartView].forEach {
             view.addSubview($0)
         }
         
@@ -101,13 +116,32 @@ final class DetailsViewController: UIViewController {
             make.centerX.equalTo(view.snp.centerX)
         }
         
-        favorite.snp.makeConstraints { make in
+        favoriteView.snp.makeConstraints { make in
             make.right.equalTo(view.snp.right).offset(-17)
             make.top.equalTo(view.snp.top).offset(54)
+        }
+        
+        chartView.snp.makeConstraints { make in
+            make.top.equalTo(dayDelta.snp.bottom).offset(40)
+            make.left.equalTo(view.snp.left)
+            make.right.equalTo(view.snp.right)
+            make.bottom.equalTo(view.snp.bottom).offset(-40)
         }
     }
 }
 
-//extension DetailsViewController: {
-//
-//}
+extension DetailsViewController: DetailsViewProtocol {
+    func updateView() {
+        
+    }
+    
+    func updateView(withLoader isLoading: Bool) {
+        
+    }
+    
+    func updateView(withError message: String) {
+        
+    }
+    
+
+}

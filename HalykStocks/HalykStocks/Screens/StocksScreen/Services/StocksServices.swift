@@ -23,6 +23,8 @@ final class StocksService: StocksServicesProtocol {
     
     func getStocks(currency: String, count: String, completion: @escaping (Result<[StockResponse], NetworkError>) -> Void) {
         client.execute(with: StocksRouter.stocks(currency: currency, count: count), completion: completion)
+        
+        print(StocksRouter.stocks(currency: currency, count: count))
     }
 }
 

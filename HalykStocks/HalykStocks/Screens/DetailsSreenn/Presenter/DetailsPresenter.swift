@@ -36,7 +36,7 @@ final class DetailsPresenter: DetailsPresenterProtocol {
             
             switch result {
             case .success(let details):
-                print("OK")
+                print(details)
                 self?.view?.updateView()
             case .failure(let error):
                 self?.view?.updateView(withError: error.localizedDescription)
