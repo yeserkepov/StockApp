@@ -5,13 +5,18 @@
 //  Created by Даурен on 28.05.2022.
 //
 
-//https://api.coingecko.com/api/v3/coins/%5BID%5D/market_chart?vs_currency=usd&days=60&interval=daily
+// нужно
+// https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=60&interval=daily
+
+// получаю
+// https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=60&interval=daily
 
 import Foundation
 
 enum DetailsRouter: Router {
     
-    case stockDetails(currency: String, days: String, interval: String)
+    // в кейс прокинуть параметр с id?
+    case stockDetails(id: String, currency: String, days: String, interval: String)
     
     var baseUrl: String {
         "https://api.coingecko.com/api"
@@ -19,8 +24,9 @@ enum DetailsRouter: Router {
     
     var path: String {
         switch self {
-        case .stockDetails:
-            return "/v3/coins/bitcoin/market_chart"
+        case .stockDetails(let id, _, _, _):
+            // как передать ID?
+            return "/v3/coins/\(id)/market_chart"
         }
     }
     
@@ -33,7 +39,7 @@ enum DetailsRouter: Router {
     
     var parameters: Parameters {
         switch self {
-        case .stockDetails(let currency, let days, let interval):
+        case .stockDetails(_, let currency, let days, let interval):
             return ["vs_currency": currency, "days": days, "interval": interval]
         }
     }

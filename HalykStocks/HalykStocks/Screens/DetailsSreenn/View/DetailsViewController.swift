@@ -83,7 +83,9 @@ final class DetailsViewController: UIViewController {
         setupView()
         setupSubviews()
         print("details VC")
-        presenter.loadView()
+        configure(with: presenter.dataConfigure())
+        presenter.loadCharts()
+        
     }
     
     private func setupView() {
@@ -123,10 +125,18 @@ final class DetailsViewController: UIViewController {
         
         chartView.snp.makeConstraints { make in
             make.top.equalTo(dayDelta.snp.bottom).offset(40)
-            make.left.equalTo(view.snp.left)
-            make.right.equalTo(view.snp.right)
+            make.left.equalTo(view.snp.left).offset(10)
+            make.right.equalTo(view.snp.right).offset(-10)
             make.bottom.equalTo(view.snp.bottom).offset(-40)
         }
+    }
+    
+    private func configure(with stocks: StockModelProtocol) {
+        stockSymbol.text = stocks.symbol
+        companyLabel.text = stocks.name
+        currentPrice.text = stocks.price
+        dayDelta.text = stocks.change
+        dayDelta.textColor = stocks.changeColor
     }
 }
 

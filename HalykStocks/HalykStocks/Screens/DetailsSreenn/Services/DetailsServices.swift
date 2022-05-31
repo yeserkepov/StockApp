@@ -8,9 +8,9 @@
 import Foundation
 
 protocol DetailsServicesProtocol {
-    func getStockDetails(currency: String, days: String, interval: String, completion: @escaping(Result<[DetailsResponse], NetworkError>) -> Void)
-    func getStockDetails(currency: String, completion: @escaping(Result<[DetailsResponse], NetworkError>) -> Void)
-    func getStockDetails(completion: @escaping(Result<[DetailsResponse], NetworkError>) -> Void)
+    func getStockDetails(id: String, currency: String, days: String, interval: String, completion: @escaping(Result<DetailsResponse, NetworkError>) -> Void)
+    func getStockDetails(id: String, currency: String, completion: @escaping(Result<DetailsResponse, NetworkError>) -> Void)
+    func getStockDetails(id: String, completion: @escaping(Result<DetailsResponse, NetworkError>) -> Void)
 }
 
 final class DetailsService: DetailsServicesProtocol {
@@ -18,18 +18,16 @@ final class DetailsService: DetailsServicesProtocol {
     internal init(client: NetworkService) {
         self.client = client
     }
-    func getStockDetails(currency: String, days: String, interval: String, completion: @escaping(Result<[DetailsResponse], NetworkError>) -> Void) {
-        client.execute(with: DetailsRouter.stockDetails(currency: currency, days: days, interval: interval), completion: completion)
-        
-        print(DetailsRouter.stockDetails(currency: currency, days: days, interval: interval))
+    func getStockDetails(id: String, currency: String, days: String, interval: String, completion: @escaping(Result<DetailsResponse, NetworkError>) -> Void) {
+        client.execute(with: DetailsRouter.stockDetails(id: id, currency: currency, days: days, interval: interval), completion: completion)
     }
 }
 
 extension DetailsServicesProtocol {
-    func getStockDetails(currency: String, completion: @escaping(Result<[DetailsResponse], NetworkError>) -> Void) {
-        getStockDetails(currency: currency, days: "60", interval: "daily", completion: completion)
+    func getStockDetails(id: String, currency: String, completion: @escaping(Result<DetailsResponse, NetworkError>) -> Void) {
+        getStockDetails(id: id,currency: currency, days: "60", interval: "daily", completion: completion)
     }
-    func getStockDetails(completion: @escaping(Result<[DetailsResponse], NetworkError>) -> Void) {
-        getStockDetails(currency: "usd", days: "60", interval: "daily", completion: completion)
+    func getStockDetails(id: String, completion: @escaping(Result<DetailsResponse, NetworkError>) -> Void) {
+        getStockDetails(id: id, currency: "usd", days: "60", interval: "daily", completion: completion)
     }
 }

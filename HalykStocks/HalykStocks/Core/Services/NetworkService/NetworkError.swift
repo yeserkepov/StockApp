@@ -2,10 +2,10 @@
 import Foundation
 
 enum NetworkError: String, Error {
-    case missingURL
-    case missingRequest
-    case taskError
-    case responseError
-    case dataError
-    case decodeError
+    case missingURL = "missingURL"
+    case missingRequest = "missingRequest"
+    case taskError = "taskError"
+    case responseError = "responseError"
+    case dataError = "dataError"
+    case decodeError = "decodeError"
 }

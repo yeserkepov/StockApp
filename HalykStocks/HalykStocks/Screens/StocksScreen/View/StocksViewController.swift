@@ -84,7 +84,7 @@ extension StocksViewController: UITableViewDelegate {
 
 extension StocksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ModuleBuilder.shared.detailsModule()
+        let vc = ModuleBuilder.shared.detailsModule(with: presenter.model(for: indexPath))
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

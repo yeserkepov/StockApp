@@ -9,7 +9,6 @@ final class Network: NetworkService {
     private let session = URLSession(configuration: .default)
     
     func execute<T: Decodable>(with router: Router, completion: @escaping (Result<T, NetworkError>) -> Void) {
-        print("executing")
         call(with: router) { result in
             DispatchQueue.main.async {
                 completion(result)
@@ -22,6 +21,7 @@ final class Network: NetworkService {
             completion(.failure(.missingRequest))
             return
         }
+        print("request URL - ", request)
         
         let task = session.dataTask(with: request) { data, response, error in
             if let _ = error {
@@ -45,6 +45,7 @@ final class Network: NetworkService {
             }
             
             completion(.success(decodableResult))
+            print(decodableResult)
         }
         
         task.resume()

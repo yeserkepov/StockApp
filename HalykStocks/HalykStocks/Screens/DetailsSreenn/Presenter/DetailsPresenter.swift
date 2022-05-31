@@ -15,28 +15,36 @@ protocol DetailsViewProtocol: AnyObject {
 
 protocol DetailsPresenterProtocol {
     var view: DetailsViewProtocol? { get set }
-    func loadView()
+    func loadCharts()
+    func dataConfigure() -> StockModelProtocol
 }
 
 final class DetailsPresenter: DetailsPresenterProtocol {
     private let service: DetailsServicesProtocol
     private var details: [DetailModelProtocol] = []
+    private let model: StockModelProtocol
     
-    init(service: DetailsServicesProtocol) {
+    init(service: DetailsServicesProtocol, model: StockModelProtocol) {
         self.service = service
+        self.model = model
     }
+    
+    // замутить диспатч для новой модели
     
     weak var view: DetailsViewProtocol?
     
-    func loadView() {
+    func dataConfigure() -> StockModelProtocol  {
+        model
+    }
+    
+    func loadCharts() {
         view?.updateView(withLoader: true)
         
-        service.getStockDetails { [weak self] result in
+        service.getStockDetails(id: model.name.lowercased()) { [weak self] result in
             self?.view?.updateView(withLoader: false)
-            
             switch result {
             case .success(let details):
-                print(details)
+                //self?.details = details.map { DetailModel(detail:  $0)}
                 self?.view?.updateView()
             case .failure(let error):
                 self?.view?.updateView(withError: error.localizedDescription)

@@ -9,10 +9,8 @@ import UIKit
 
 protocol DetailModelProtocol {
     var prices: [[Double]] { get }
-    var marketCaps: [[Double]] { get }
-    var totalVolumes: [[Double]] { get }
-    
-//    var prices: [Price] { get }
+    var market_caps: [[Double]] { get }
+    var total_volumes: [[Double]] { get }
 }
 
 final class DetailModel: DetailModelProtocol {
@@ -25,16 +23,13 @@ final class DetailModel: DetailModelProtocol {
     var prices: [[Double]] {
         detail.prices
     }
-
-    var marketCaps: [[Double]] {
-        detail.marketCaps
+    
+    var market_caps: [[Double]] {
+        detail.market_caps
+    }
+    
+    var total_volumes: [[Double]] {
+        detail.total_volumes
     }
 
-    var totalVolumes: [[Double]] {
-        detail.totalVolumes
-    }
-//
-//    var prices: [Price] {
-//        detail.prices
-//    }
 }

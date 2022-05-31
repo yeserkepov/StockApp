@@ -36,8 +36,8 @@ final class ModuleBuilder {
         return view
     }
     
-    func detailsModule() -> UIViewController {
-        let presenter = DetailsPresenter(service: detailsService())
+    func detailsModule(with model: StockModelProtocol) -> UIViewController {
+        let presenter = DetailsPresenter(service: detailsService(), model: model)
         let view = DetailsViewController(presenter: presenter)
         presenter.view = view
         view.hidesBottomBarWhenPushed = true
@@ -47,17 +47,12 @@ final class ModuleBuilder {
     
     func tabBarController() -> UIViewController {
         let tabBar = UITabBarController()
-        
         let stocksVC = stocksModule()
         stocksVC.tabBarItem = UITabBarItem(title: "Stocks", image: UIImage(named: "stocks"), tag: 0)
-        
         let searchVC = SearchViewController()
-        //let searchVC = detailsModule()
         searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "search"), tag: 1)
-        
         let favoriteVC = FavoriteViewController()
         favoriteVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favorite"), tag: 2)
-        
         tabBar.viewControllers = [stocksVC, searchVC, favoriteVC].map { UINavigationController(rootViewController: $0) }
         
         return tabBar
