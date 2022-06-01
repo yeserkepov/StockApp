@@ -49,6 +49,8 @@
 		CEA08E9B28447686001375DA /* DetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E9628433434001375DA /* DetailsRouter.swift */; };
 		CEA08E9C28447688001375DA /* DetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E9428433434001375DA /* DetailsResponse.swift */; };
 		CEA08E9D28447817001375DA /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E9728433EA7001375DA /* DetailModel.swift */; };
+		CEA08EA02847379A001375DA /* FavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E9F2847379A001375DA /* FavoriteService.swift */; };
+		CEA08EA428475D7F001375DA /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08EA328475D7F001375DA /* FavoritePresenter.swift */; };
 		CEA3866D283D3F6A0061FCF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA3866C283D3F6A0061FCF0 /* AppDelegate.swift */; };
 		CEA38671283D3F6A0061FCF0 /* StocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA38670283D3F6A0061FCF0 /* StocksViewController.swift */; };
 		CEA38676283D3F6D0061FCF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA38675283D3F6D0061FCF0 /* Assets.xcassets */; };
@@ -100,6 +102,8 @@
 		CEA08E9628433434001375DA /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
 		CEA08E9728433EA7001375DA /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		CEA08E9828433F66001375DA /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		CEA08E9F2847379A001375DA /* FavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteService.swift; sourceTree = "<group>"; };
+		CEA08EA328475D7F001375DA /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
 		CEA38669283D3F6A0061FCF0 /* HalykStocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HalykStocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA3866C283D3F6A0061FCF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA38670283D3F6A0061FCF0 /* StocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksViewController.swift; sourceTree = "<group>"; };
@@ -249,7 +253,9 @@
 		CEA08E722840D291001375DA /* FavoriteScreen */ = {
 			isa = PBXGroup;
 			children = (
-				CEA08E752840D2D7001375DA /* FavoriteViewController.swift */,
+				CEA08EA228475D6D001375DA /* Presenter */,
+				CEA08EA1284737AD001375DA /* View */,
+				CEA08E9E28473752001375DA /* Services */,
 			);
 			path = FavoriteScreen;
 			sourceTree = "<group>";
@@ -345,6 +351,30 @@
 				CEA08E9728433EA7001375DA /* DetailModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CEA08E9E28473752001375DA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E9F2847379A001375DA /* FavoriteService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CEA08EA1284737AD001375DA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E752840D2D7001375DA /* FavoriteViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEA08EA228475D6D001375DA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08EA328475D7F001375DA /* FavoritePresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		CEA38660283D3F6A0061FCF0 = {
@@ -531,8 +561,10 @@
 				CEA08E9A28447681001375DA /* DetailsServices.swift in Sources */,
 				CEA08E8F28429B5D001375DA /* ModuleBuilder.swift in Sources */,
 				CEA08E632840749B001375DA /* HTTPMethod.swift in Sources */,
+				CEA08EA428475D7F001375DA /* FavoritePresenter.swift in Sources */,
 				CEA08E642840749B001375DA /* Router.swift in Sources */,
 				CEA08E9D28447817001375DA /* DetailModel.swift in Sources */,
+				CEA08EA02847379A001375DA /* FavoriteService.swift in Sources */,
 				CEA08E762840D2D7001375DA /* FavoriteViewController.swift in Sources */,
 				CEA08E8B28422EF4001375DA /* StockRouter.swift in Sources */,
 				CEA08E55283F9173001375DA /* UIColor+Ext.swift in Sources */,

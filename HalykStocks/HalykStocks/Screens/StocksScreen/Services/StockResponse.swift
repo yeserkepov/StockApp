@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StockResponse: Decodable {
+struct StockResponse: Codable {
     let id: String
     let symbol: String
     let name: String

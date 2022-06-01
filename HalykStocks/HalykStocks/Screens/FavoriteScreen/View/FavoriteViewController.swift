@@ -1,17 +1,17 @@
 //
-//  ViewController.swift
+//  FavoriteViewController.swift
 //  HalykStocks
 //
-//  Created by Даурен on 24.05.2022.
+//  Created by Даурен on 27.05.2022.
 //
 
 import UIKit
 import SnapKit
 
-final class StocksViewController: UIViewController {
-    private let presenter: StocksPresenterProtocol
+final class FavoriteViewController: UIViewController {
+    private let presenter: FavoritePresenterProtocol
     
-    init(presenter: StocksPresenterProtocol) {
+    init(presenter: FavoritePresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -33,17 +33,17 @@ final class StocksViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupView()
-        setupSubviews()
-        
         presenter.loadView()
     }
     
     private func setupView() {
         view.backgroundColor = .white
-        title = "Stocks"
+        title = "Favorite"
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
+        setupSubviews()
     }
     
     private func setupSubviews() {
@@ -56,32 +56,16 @@ final class StocksViewController: UIViewController {
             make.bottom.equalTo(view.snp.bottom)
         }
     }
-    
-    private func showError(_ message: Error) {
-        print(message.localizedDescription)
-    }
 }
 
-extension StocksViewController: StocksViewProtocol {
-    func updateView() {
-        tableView.reloadData()
-    }
+extension FavoriteViewController: UITableViewDelegate {
     
-    func updateView(withLoader isLoading: Bool) {
-    }
-    
-    func updateView(withError message: String) {
-    }
 }
 
-extension StocksViewController: UITableViewDelegate {
-
-}
-
-extension StocksViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ModuleBuilder.shared.detailsModule(with: presenter.model(for: indexPath))
-        self.navigationController?.pushViewController(vc, animated: true)
+extension FavoriteViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        presenter.favCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -89,11 +73,22 @@ extension StocksViewController: UITableViewDataSource {
         cell.setBackgroundColor(for: indexPath.row)
         cell.selectionStyle = .none
         cell.configure(with: presenter.model(for: indexPath))
-        
+
         return cell
+        
+    }
+}
+
+extension FavoriteViewController: FavoriteViewProtocol {
+    func updateView() {
+        tableView.reloadData()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter.stocksCount
+    func updateView(withLoader isLoading: Bool) {
+        
+    }
+    
+    func updateView(withError message: String) {
+        
     }
 }

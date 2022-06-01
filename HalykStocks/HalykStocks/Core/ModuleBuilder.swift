@@ -16,6 +16,8 @@ final class ModuleBuilder {
     
     static let shared: ModuleBuilder = .init()
     
+    let favService: FavoriteServiceProtocol = FavoriteService()
+    
     private func networkService() -> NetworkService {
         network
     }
@@ -36,6 +38,16 @@ final class ModuleBuilder {
         return view
     }
     
+    private func favoriteModule() -> UIViewController {
+        let service = FavoriteService()
+        let presenter = FavoritePresenter(service: service)
+        let view = FavoriteViewController(presenter: presenter)
+        presenter.view = view
+        
+        return view
+
+    }
+    
     func detailsModule(with model: StockModelProtocol) -> UIViewController {
         let presenter = DetailsPresenter(service: detailsService(), model: model)
         let view = DetailsViewController(presenter: presenter)
@@ -51,9 +63,9 @@ final class ModuleBuilder {
         stocksVC.tabBarItem = UITabBarItem(title: "Stocks", image: UIImage(named: "stocks"), tag: 0)
         let searchVC = SearchViewController()
         searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "search"), tag: 1)
-        let favoriteVC = FavoriteViewController()
+        let favoriteVC = favoriteModule()
         favoriteVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favorite"), tag: 2)
-        tabBar.viewControllers = [stocksVC, searchVC, favoriteVC].map { UINavigationController(rootViewController: $0) }
+        tabBar.viewControllers = [stocksVC,  favoriteVC, searchVC].map { UINavigationController(rootViewController: $0) }
         
         return tabBar
     }
