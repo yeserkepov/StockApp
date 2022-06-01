@@ -44,7 +44,7 @@ final class StockModel: StockModelProtocol {
     }
     
     var price: String {
-        "\(stock.price.clean) $"
+        "\(stock.price.formattedWithSeparator) $"
     }
     
     var change: String {

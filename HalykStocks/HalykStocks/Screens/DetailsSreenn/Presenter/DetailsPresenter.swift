@@ -21,7 +21,7 @@ protocol DetailsPresenterProtocol {
 
 final class DetailsPresenter: DetailsPresenterProtocol {
     private let service: DetailsServicesProtocol
-    private var details: [DetailModelProtocol] = []
+    private var details: DetailModelProtocol?
     private let model: StockModelProtocol
     
     init(service: DetailsServicesProtocol, model: StockModelProtocol) {
@@ -40,11 +40,14 @@ final class DetailsPresenter: DetailsPresenterProtocol {
     func loadCharts() {
         view?.updateView(withLoader: true)
         
-        service.getStockDetails(id: model.name.lowercased()) { [weak self] result in
+        service.getStockDetails(id: model.id) { [weak self] result in
             self?.view?.updateView(withLoader: false)
             switch result {
-            case .success(let details):
-                //self?.details = details.map { DetailModel(detail:  $0)}
+            case .success(let chart):
+                self?.details = DetailModel(detail: chart)
+                print("PRICES - ", self?.details?.prices ?? 0.0)
+                print("CAPS - ", self?.details?.market_caps ?? 0.0)
+                print("VOLUMES - ", self?.details?.total_volumes ?? 0.0)
                 self?.view?.updateView()
             case .failure(let error):
                 self?.view?.updateView(withError: error.localizedDescription)
