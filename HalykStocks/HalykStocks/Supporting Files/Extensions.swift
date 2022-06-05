@@ -32,10 +32,6 @@ extension NSObject {
 }
 
 extension Double {
-//    var clean: Double {
-//        return self.truncatingRemainder(dividingBy: 1) == 0 ? self.with(numberOfDecimals: 0) : self.with(numberOfDecimals: 2)
-//    }
-    
     private func rounded(digits: Int) -> Double {
         let multiplier = pow(10.0, Double(digits))
         return (self * multiplier).rounded() / multiplier
@@ -66,6 +62,4 @@ extension Double {
         }
         return "\(res) %"
     }
-
 }
-

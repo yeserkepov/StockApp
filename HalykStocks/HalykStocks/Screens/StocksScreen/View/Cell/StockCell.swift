@@ -11,7 +11,6 @@ final class StockCell: UITableViewCell {
     
     private lazy var backView: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 12
         view.backgroundColor = .clear
         return view
@@ -19,7 +18,6 @@ final class StockCell: UITableViewCell {
     
     private lazy var iconView: UIImageView = {
         let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         image.image = UIImage(named: "AMZN")
         image.clipsToBounds = true
@@ -29,7 +27,6 @@ final class StockCell: UITableViewCell {
     
     private lazy var symbolLabel: UILabel = {
         let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = "AMZN"
         lbl.font = UIFont.customFont(name: .moserratBold, size: 18)
         lbl.textColor = .black
@@ -38,7 +35,6 @@ final class StockCell: UITableViewCell {
     
     private lazy var companyLabel: UILabel = {
         let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = "Amazon.com"
         lbl.font = UIFont.customFont(name: .moserratMedium, size: 12)
         lbl.textColor = .black
@@ -47,7 +43,6 @@ final class StockCell: UITableViewCell {
     
     private lazy var favorite: UIImageView = {
         let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.image = UIImage(named: "star_grey")
@@ -56,19 +51,16 @@ final class StockCell: UITableViewCell {
     
     private lazy var textView: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var priceView: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var currentPrice: UILabel = {
         let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = "$131.93"
         lbl.textAlignment = .center
         lbl.font = UIFont.customFont(name: .moserratBold, size: 18)
@@ -78,7 +70,6 @@ final class StockCell: UITableViewCell {
     
     private lazy var dayDeltaChange: UILabel = {
         let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = "+$0.12"
         lbl.textAlignment = .center
         lbl.font = UIFont.customFont(name: .moserratMedium, size: 12)
@@ -88,7 +79,6 @@ final class StockCell: UITableViewCell {
     
     private lazy var dayDeltaPercentage: UILabel = {
         let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = "(1,15%)"
         lbl.textAlignment = .center
         lbl.font = UIFont.customFont(name: .moserratMedium, size: 12)
@@ -196,7 +186,7 @@ final class StockCell: UITableViewCell {
         }
         
         currentPrice.snp.makeConstraints { make in
-            make.centerX.equalTo(priceView.snp.centerX)
+            make.centerX.equalToSuperview()
             make.left.equalTo(priceView.snp.left)
             make.right.equalTo(priceView.snp.right)
             make.top.equalTo(priceView.snp.top)

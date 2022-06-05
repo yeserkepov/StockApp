@@ -17,7 +17,6 @@ final class DetailsViewController: UIViewController {
     
     private lazy var favorite: UIImageView = {
         let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.image = UIImage(named: "fav_det")
@@ -26,7 +25,6 @@ final class DetailsViewController: UIViewController {
     
     private lazy var stockSymbol: UILabel = {
         let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center
         lbl.font = UIFont.customFont(name: .moserratBold, size: 24)
         lbl.textColor = .black
@@ -35,7 +33,6 @@ final class DetailsViewController: UIViewController {
     
     private lazy var companyLabel: UILabel = {
         let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center
         lbl.font = UIFont.customFont(name: .moserratMedium, size: 16)
         lbl.textColor = .black
@@ -44,7 +41,6 @@ final class DetailsViewController: UIViewController {
     
     private lazy var currentPrice: UILabel = {
         let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center
         lbl.font = UIFont.customFont(name: .moserratBold, size: 32)
         lbl.textColor = .black
@@ -53,7 +49,6 @@ final class DetailsViewController: UIViewController {
     
     private lazy var dayDelta: UILabel = {
         let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center
         lbl.font = UIFont.customFont(name: .moserratMedium, size: 16)
         lbl.textColor = .black
@@ -80,28 +75,27 @@ final class DetailsViewController: UIViewController {
         
         stockSymbol.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(40)
-            make.centerX.equalTo(view.snp.centerX)
+            make.centerX.equalToSuperview()
         }
         
         companyLabel.snp.makeConstraints { make in
             make.top.equalTo(stockSymbol.snp.bottom).offset(5)
-            make.centerX.equalTo(view.snp.centerX)
+            make.centerX.equalToSuperview()
         }
-        
         
         currentPrice.snp.makeConstraints { make in
             make.top.equalTo(companyLabel.snp.bottom).offset(76)
-            make.centerX.equalTo(view.snp.centerX)
+            make.centerX.equalToSuperview()
         }
         
         dayDelta.snp.makeConstraints { make in
             make.top.equalTo(currentPrice.snp.bottom).offset(8)
-            make.centerX.equalTo(view.snp.centerX)
+            make.centerX.equalToSuperview()
         }
         
         favorite.snp.makeConstraints { make in
-            make.right.equalTo(view.snp.right).offset(-17)
-            make.top.equalTo(view.snp.top).offset(54)
+            make.right.equalToSuperview().offset(-17)
+            make.top.equalToSuperview().offset(54)
         }
     }
 }

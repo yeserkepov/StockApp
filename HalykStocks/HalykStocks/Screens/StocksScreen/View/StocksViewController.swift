@@ -14,7 +14,6 @@ final class StocksViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let table = UITableView()
-        table.translatesAutoresizingMaskIntoConstraints = false
         table.register(StockCell.self, forCellReuseIdentifier: StockCell.typeName)
         table.separatorStyle = .none
         table.showsVerticalScrollIndicator = false

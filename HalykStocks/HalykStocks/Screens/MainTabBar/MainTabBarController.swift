@@ -16,12 +16,6 @@ class MainTabBarController: UITabBarController {
         
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-        
-    }
-    
     private func setupNavigationBar() -> [UIViewController] {
         var vc: [UIViewController] = []
         let stocksVC = createVC(rootVC: StocksViewController(), title: "Stocks", image: UIImage(named: "stocks")!)
