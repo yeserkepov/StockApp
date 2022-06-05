@@ -73,9 +73,7 @@ extension FavoriteViewController: UITableViewDataSource {
         cell.setBackgroundColor(for: indexPath.row)
         cell.selectionStyle = .none
         cell.configure(with: presenter.model(for: indexPath))
-
         return cell
-        
     }
 }
 

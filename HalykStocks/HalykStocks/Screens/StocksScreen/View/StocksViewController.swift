@@ -24,7 +24,6 @@ final class StocksViewController: UIViewController {
         let table = UITableView()
         table.delegate = self
         table.dataSource = self
-        table.translatesAutoresizingMaskIntoConstraints = false
         table.register(StockCell.self, forCellReuseIdentifier: StockCell.typeName)
         table.separatorStyle = .none
         table.showsVerticalScrollIndicator = false
@@ -50,10 +49,10 @@ final class StocksViewController: UIViewController {
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
-            make.right.equalTo(view.snp.right).offset(-16)
-            make.left.equalTo(view.snp.left).offset(16)
-            make.top.equalTo(view.snp.top)
-            make.bottom.equalTo(view.snp.bottom)
+            make.right.equalToSuperview().offset(-16)
+            make.left.equalToSuperview().offset(16)
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
     

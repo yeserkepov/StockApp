@@ -8,8 +8,8 @@
 import Foundation
 
 enum StocksRouter: Router {
-
-case stocks(currency: String, count: String)
+    
+    case stocks(currency: String, count: String)
     
     var baseUrl: String {
         "https://api.coingecko.com/api"

@@ -29,8 +29,6 @@ final class DetailsPresenter: DetailsPresenterProtocol {
         self.model = model
     }
     
-    // замутить диспатч для новой модели
-    
     weak var view: DetailsViewProtocol?
     
     func dataConfigure() -> StockModelProtocol  {

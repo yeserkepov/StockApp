@@ -34,7 +34,6 @@ final class FavoritePresenter: FavoritePresenterProtocol {
     }
     
     func loadView() {
-        
         favStocks = service.model().map { StockModel(stock: $0) }
         view?.updateView()
     }

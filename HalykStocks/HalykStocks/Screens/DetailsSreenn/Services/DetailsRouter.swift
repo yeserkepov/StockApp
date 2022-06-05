@@ -5,12 +5,6 @@
 //  Created by Даурен on 28.05.2022.
 //
 
-// нужно
-// https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=60&interval=daily
-
-// получаю
-// https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=60&interval=daily
-
 import Foundation
 
 enum DetailsRouter: Router {
@@ -25,7 +19,6 @@ enum DetailsRouter: Router {
     var path: String {
         switch self {
         case .stockDetails(let id, _, _, _):
-            // как передать ID?
             return "/v3/coins/\(id)/market_chart"
         }
     }

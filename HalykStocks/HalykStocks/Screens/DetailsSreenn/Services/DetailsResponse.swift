@@ -12,9 +12,3 @@ struct DetailsResponse: Decodable {
     let market_caps: [[Double]]
     let total_volumes: [[Double]]
 }
-//
-//enum CodingKeys: String, CodingKey {
-//    case prices
-//    case marketCaps = "market_caps"
-//    case totalVolumes = "total_volumes"
-//}
