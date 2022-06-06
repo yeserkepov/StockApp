@@ -70,9 +70,9 @@ final class StockModel: StockModelProtocol {
     func favoriteTapped() {
         isFavorite.toggle()
         if isFavorite {
-            service.save(with: stock)
+            service.save(stocks: stock)
         } else {
-            service.remove(with: stock)
+            service.remove(stocks: stock)
         }
         print(id, " favorite condition - ", isFavorite)
     }

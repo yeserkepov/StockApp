@@ -20,12 +20,14 @@ final class DetailsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var favoriteView: UIImageView = {
-        let image = UIImageView()
-        image.contentMode = .scaleAspectFit
-        image.clipsToBounds = true
-        image.image = UIImage(named: "fav_det")
-        return image
+    private lazy var favoriteButton: UIButton = {
+        let btn = UIButton()
+        btn.contentMode = .scaleAspectFit
+        btn.setImage(UIImage(named: "favorite"), for: .normal)
+        btn.setImage(UIImage(named: "favorite_selected"), for: .selected)
+        btn.isSelected = presenter.favButtonSelected
+        btn.addTarget(self, action: #selector(favoriteTapped), for: .touchUpInside)
+        return btn
     }()
     
     private lazy var stockSymbol: UILabel = {
@@ -82,12 +84,17 @@ final class DetailsViewController: UIViewController {
         
     }
     
+    @objc private func favoriteTapped(sender: UIButton) {
+        sender.isSelected.toggle()
+        presenter.favTapped()
+    }
+    
     private func setupView() {
         view.backgroundColor = .white
     }
     
     private func setupSubviews() {
-        [stockSymbol, companyLabel, currentPrice, dayDelta, favoriteView, chartView].forEach {
+        [stockSymbol, companyLabel, currentPrice, dayDelta, chartView].forEach {
             view.addSubview($0)
         }
         
@@ -101,7 +108,6 @@ final class DetailsViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
-        
         currentPrice.snp.makeConstraints { make in
             make.top.equalTo(companyLabel.snp.bottom).offset(76)
             make.centerX.equalToSuperview()
@@ -112,17 +118,14 @@ final class DetailsViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
-        favoriteView.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(-17)
-            make.top.equalToSuperview().offset(54)
-        }
-        
         chartView.snp.makeConstraints { make in
             make.top.equalTo(dayDelta.snp.bottom).offset(40)
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
             make.bottom.equalToSuperview().offset(-40)
         }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favoriteButton)
     }
     
     private func configure(with stocks: StockModelProtocol) {

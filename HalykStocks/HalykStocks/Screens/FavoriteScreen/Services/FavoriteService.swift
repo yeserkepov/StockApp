@@ -8,10 +8,10 @@
 import Foundation
 
 protocol FavoriteServiceProtocol {
-    func save(with id: StockResponse)
-    func remove(with id: StockResponse)
+    func save(stocks: StockResponse)
+    func remove(stocks: StockResponse)
     func isFavorite(for id: String) -> Bool
-    func model() -> [StockResponse]
+    func favoriteStocks() -> [StockResponse]
 }
 
 final class FavoriteService: FavoriteServiceProtocol {
@@ -26,23 +26,22 @@ final class FavoriteService: FavoriteServiceProtocol {
         } catch {
             print(error.localizedDescription)
         }
-        
         return []
     }()
     
-    func model() -> [StockResponse] {
+    func favoriteStocks() -> [StockResponse] {
         favArray
     }
     
-    func save(with id: StockResponse) {
-        favArray.append(id)
-        updateRepo()
+    func save(stocks: StockResponse) {
+        favArray.append(stocks)
+        updateRepo(id: stocks.id)
     }
     
-    func remove(with id: StockResponse) {
-        if let index = favArray.firstIndex(where: {$0.id == id.id}) {
+    func remove(stocks: StockResponse) {
+        if let index = favArray.firstIndex(where: {$0.id == stocks.id}) {
             favArray.remove(at: index)
-            updateRepo()
+            updateRepo(id: stocks.id)
         }
     }
     
@@ -50,10 +49,13 @@ final class FavoriteService: FavoriteServiceProtocol {
         favArray.contains(where: {$0.id == id})
     }
     
-    private func updateRepo() {
+    private func updateRepo(id: String) {
         do {
             let data = try JSONEncoder().encode(favArray)
             try data.write(to: path)
+            NotificationCenter.default.post(name: NSNotification.Name.favoriteNotifications,
+                                                object: nil,
+                                                userInfo: ["id" : id])
             print(data)
         } catch  {
             print(error.localizedDescription)

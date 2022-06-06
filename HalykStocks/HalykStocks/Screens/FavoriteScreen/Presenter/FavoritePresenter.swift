@@ -9,6 +9,7 @@ import Foundation
 
 protocol FavoriteViewProtocol: AnyObject {
     func updateView()
+    func updateCell(for indexPath: IndexPath)
     func updateView(withLoader isLoading: Bool)
     func updateView(withError message: String)
 }
@@ -17,6 +18,7 @@ protocol FavoritePresenterProtocol {
     var view: FavoriteViewProtocol? { get set }
     var favCount: Int { get }
     func loadView()
+    func loadFavorites()
     func model(for index: IndexPath) -> StockModelProtocol
 }
 
@@ -34,11 +36,23 @@ final class FavoritePresenter: FavoritePresenterProtocol {
     }
     
     func loadView() {
-        favStocks = service.model().map { StockModel(stock: $0) }
-        view?.updateView()
+        startObservingFavNotifications()
+        loadFavorites()
+    }
+    
+    func loadFavorites() {
+        let stocks = service.favoriteStocks()
+        favStocks = stocks.map { stock in StockModel(stock: stock) }
     }
     
     func model(for index: IndexPath) -> StockModelProtocol {
         favStocks[index.row]
+    }
+}
+
+extension FavoritePresenter: FavoriteUpdateServiceProtocol {
+    func setFavorite(notification: Notification) {
+        loadFavorites()
+        view?.updateView()
     }
 }

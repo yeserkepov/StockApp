@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		732EED8A927DD71B913DA84E /* Pods_HalykStocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F05F4F53B1A570DA26BB5FE /* Pods_HalykStocks.framework */; };
+		CE2C45CC284CD9A2009F0D03 /* FavoriteUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C45CB284CD9A2009F0D03 /* FavoriteUpdateService.swift */; };
+		CE2C45CE284CE903009F0D03 /* Collection + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C45CD284CE903009F0D03 /* Collection + Ext.swift */; };
 		CEA08E16283D4462001375DA /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E15283D4462001375DA /* StockCell.swift */; };
 		CEA08E2D283DF8EC001375DA /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEA08E19283DF8EB001375DA /* Montserrat-LightItalic.ttf */; };
 		CEA08E2E283DF8EC001375DA /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEA08E1A283DF8EC001375DA /* Montserrat-Medium.ttf */; };
@@ -61,6 +63,8 @@
 		1AC584540FA45BD4F7A0E13A /* Pods-HalykStocks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HalykStocks.debug.xcconfig"; path = "Target Support Files/Pods-HalykStocks/Pods-HalykStocks.debug.xcconfig"; sourceTree = "<group>"; };
 		2F05F4F53B1A570DA26BB5FE /* Pods_HalykStocks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HalykStocks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4111A3048424DC3059F74FA6 /* Pods-HalykStocks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HalykStocks.release.xcconfig"; path = "Target Support Files/Pods-HalykStocks/Pods-HalykStocks.release.xcconfig"; sourceTree = "<group>"; };
+		CE2C45CB284CD9A2009F0D03 /* FavoriteUpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUpdateService.swift; sourceTree = "<group>"; };
+		CE2C45CD284CE903009F0D03 /* Collection + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection + Ext.swift"; sourceTree = "<group>"; };
 		CEA08E15283D4462001375DA /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
 		CEA08E19283DF8EB001375DA /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
 		CEA08E1A283DF8EC001375DA /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
@@ -315,6 +319,7 @@
 				CEA08E8428422DD0001375DA /* NSObject+Ext.swift */,
 				CEA08E8628422DF6001375DA /* UIFont+Ext.swift */,
 				CEA08E8828422E53001375DA /* Numeric+Ext.swift */,
+				CE2C45CD284CE903009F0D03 /* Collection + Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				CEA08E9F2847379A001375DA /* FavoriteService.swift */,
+				CE2C45CB284CD9A2009F0D03 /* FavoriteUpdateService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -559,11 +565,13 @@
 				CEA08E742840D2CA001375DA /* SearchViewController.swift in Sources */,
 				CEA08E7C28421A8C001375DA /* StockPresenter.swift in Sources */,
 				CEA08E9A28447681001375DA /* DetailsServices.swift in Sources */,
+				CE2C45CE284CE903009F0D03 /* Collection + Ext.swift in Sources */,
 				CEA08E8F28429B5D001375DA /* ModuleBuilder.swift in Sources */,
 				CEA08E632840749B001375DA /* HTTPMethod.swift in Sources */,
 				CEA08EA428475D7F001375DA /* FavoritePresenter.swift in Sources */,
 				CEA08E642840749B001375DA /* Router.swift in Sources */,
 				CEA08E9D28447817001375DA /* DetailModel.swift in Sources */,
+				CE2C45CC284CD9A2009F0D03 /* FavoriteUpdateService.swift in Sources */,
 				CEA08EA02847379A001375DA /* FavoriteService.swift in Sources */,
 				CEA08E762840D2D7001375DA /* FavoriteViewController.swift in Sources */,
 				CEA08E8B28422EF4001375DA /* StockRouter.swift in Sources */,

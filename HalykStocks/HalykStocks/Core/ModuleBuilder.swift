@@ -34,7 +34,6 @@ final class ModuleBuilder {
         let presenter = StocksPresenter(service: stocksService())
         let view = StocksViewController(presenter: presenter)
         presenter.view = view
-        
         return view
     }
     
@@ -43,9 +42,7 @@ final class ModuleBuilder {
         let presenter = FavoritePresenter(service: service)
         let view = FavoriteViewController(presenter: presenter)
         presenter.view = view
-        
         return view
-
     }
     
     func detailsModule(with model: StockModelProtocol) -> UIViewController {

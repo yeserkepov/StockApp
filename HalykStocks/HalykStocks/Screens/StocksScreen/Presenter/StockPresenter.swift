@@ -9,6 +9,7 @@ import Foundation
 
 protocol StocksViewProtocol: AnyObject {
     func updateView()
+    func updateCell(for indexPath: IndexPath)
     func updateView(withLoader isLoading: Bool)
     func updateView(withError message: String)
 }
@@ -23,6 +24,7 @@ protocol StocksPresenterProtocol {
 final class StocksPresenter: StocksPresenterProtocol {
     private let service: StocksServicesProtocol
     private var stocks: [StockModelProtocol] = []
+    private var favorite: FavoritePresenterProtocol?
     
     var stocksCount: Int {
         stocks.count
@@ -35,8 +37,12 @@ final class StocksPresenter: StocksPresenterProtocol {
     weak var view: StocksViewProtocol?
     
     func loadView() {
+        startObservingFavNotifications()
+        loadStocks()
+    }
+    
+    func loadStocks() {
         view?.updateView(withLoader: true)
-
         service.getStocks { [weak self] result in
             self?.view?.updateView(withLoader: false)
             
@@ -52,5 +58,16 @@ final class StocksPresenter: StocksPresenterProtocol {
     
     func model(for indexPath: IndexPath) -> StockModelProtocol {
         stocks[indexPath.row]
+    }
+}
+
+extension StocksPresenter: FavoriteUpdateServiceProtocol {
+    func setFavorite(notification: Notification) {
+        guard let id = notification.stockID,
+                let index = stocks.firstIndex(where: { $0.id == id }) else { return }
+        let indexPath = IndexPath(row: index, section: 0)
+        
+        view?.updateCell(for: indexPath)
+        favorite?.view?.updateView()
     }
 }

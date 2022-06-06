@@ -35,6 +35,7 @@ final class FavoriteViewController: UIViewController {
         super.viewDidLoad()
 
         setupView()
+        
         presenter.loadView()
     }
     
@@ -50,20 +51,22 @@ final class FavoriteViewController: UIViewController {
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
-            make.right.equalTo(view.snp.right).offset(-16)
-            make.left.equalTo(view.snp.left).offset(16)
-            make.top.equalTo(view.snp.top)
-            make.bottom.equalTo(view.snp.bottom)
+            make.right.equalToSuperview().offset(-16)
+            make.left.equalToSuperview().offset(16)
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
 }
 
 extension FavoriteViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = ModuleBuilder.shared.detailsModule(with: presenter.model(for: indexPath))
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension FavoriteViewController: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter.favCount
     }
@@ -78,6 +81,10 @@ extension FavoriteViewController: UITableViewDataSource {
 }
 
 extension FavoriteViewController: FavoriteViewProtocol {
+    func updateCell(for indexPath: IndexPath) {
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
+    
     func updateView() {
         tableView.reloadData()
     }
