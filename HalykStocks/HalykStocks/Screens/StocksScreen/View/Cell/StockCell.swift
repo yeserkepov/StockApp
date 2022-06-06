@@ -47,7 +47,6 @@ final class StockCell: UITableViewCell {
     
     private lazy var favoriteButton: UIButton = {
         let btn = UIButton()
-        btn.translatesAutoresizingMaskIntoConstraints = false
         btn.contentMode = .scaleAspectFit
         btn.setImage(UIImage(named: "favorite"), for: .normal)
         btn.setImage(UIImage(named: "favorite_selected"), for: .selected)

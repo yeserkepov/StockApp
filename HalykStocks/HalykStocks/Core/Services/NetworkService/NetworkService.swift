@@ -45,7 +45,6 @@ final class Network: NetworkService {
             }
             
             completion(.success(decodableResult))
-            //print(decodableResult)
         }
         
         task.resume()

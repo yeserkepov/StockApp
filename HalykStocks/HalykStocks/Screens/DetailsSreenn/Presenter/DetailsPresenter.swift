@@ -44,11 +44,6 @@ final class DetailsPresenter: DetailsPresenterProtocol {
             switch result {
             case .success(let chart):
                 self?.details = DetailModel(detail: chart)
-                /*
-                print("PRICES - ", self?.details?.prices ?? 0.0)
-                print("CAPS - ", self?.details?.market_caps ?? 0.0)
-                print("VOLUMES - ", self?.details?.total_volumes ?? 0.0)
-                 */
                 self?.view?.updateView()
             case .failure(let error):
                 self?.view?.updateView(withError: error.localizedDescription)

@@ -24,7 +24,6 @@ final class FavoriteViewController: UIViewController {
         let table = UITableView()
         table.delegate = self
         table.dataSource = self
-        table.translatesAutoresizingMaskIntoConstraints = false
         table.register(StockCell.self, forCellReuseIdentifier: StockCell.typeName)
         table.separatorStyle = .none
         table.showsVerticalScrollIndicator = false
@@ -58,11 +57,7 @@ final class FavoriteViewController: UIViewController {
     }
 }
 
-extension FavoriteViewController: UITableViewDelegate {
-    
-}
-
-extension FavoriteViewController: UITableViewDataSource {
+extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter.favCount
