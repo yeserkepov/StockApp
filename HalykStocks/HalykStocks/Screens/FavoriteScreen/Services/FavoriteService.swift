@@ -16,7 +16,7 @@ protocol FavoriteServiceProtocol {
 
 final class FavoriteService: FavoriteServiceProtocol {
     private lazy var path: URL = {
-        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("favorites")
+        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("favorite")
     }()
     
     private lazy var favArray: [StockResponse] = {

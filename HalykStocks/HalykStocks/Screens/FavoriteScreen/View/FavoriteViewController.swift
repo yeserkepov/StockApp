@@ -33,9 +33,7 @@ final class FavoriteViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
-        
         presenter.loadView()
     }
     

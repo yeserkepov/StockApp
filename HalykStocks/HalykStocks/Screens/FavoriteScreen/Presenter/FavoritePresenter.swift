@@ -42,7 +42,7 @@ final class FavoritePresenter: FavoritePresenterProtocol {
     
     func loadFavorites() {
         let stocks = service.favoriteStocks()
-        favStocks = stocks.map { stock in StockModel(stock: stock) }
+        favStocks = stocks.map { StockModel(stock: $0) }
     }
     
     func model(for index: IndexPath) -> StockModelProtocol {
