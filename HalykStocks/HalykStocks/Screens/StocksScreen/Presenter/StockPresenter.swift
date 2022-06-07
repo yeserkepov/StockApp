@@ -16,7 +16,7 @@ protocol StocksViewProtocol: AnyObject {
 protocol StocksPresenterProtocol {
     var view: StocksViewProtocol? { get set }
     var stocksCount: Int { get }
-    
+
     func loadView()
     func model(for indexPath: IndexPath) -> StockModelProtocol
 }
@@ -24,7 +24,6 @@ protocol StocksPresenterProtocol {
 final class StocksPresenter: StocksPresenterProtocol {
     private let service: StocksServicesProtocol
     private var stocks: [StockModelProtocol] = []
-    
     var stocksCount: Int {
         stocks.count
     }

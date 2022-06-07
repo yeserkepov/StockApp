@@ -8,7 +8,7 @@
 import UIKit
 
 final class StockCell: UITableViewCell {
-    
+    private var favoriteAction: (() -> Void)?
     private lazy var backView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -45,13 +45,13 @@ final class StockCell: UITableViewCell {
         return lbl
     }()
     
-    private lazy var favorite: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFit
-        image.clipsToBounds = true
-        image.image = UIImage(named: "star_grey")
-        return image
+    private lazy var favoriteButton: UIButton = {
+        let btn = UIButton()
+        btn.contentMode = .scaleAspectFit
+        btn.setImage(UIImage(named: "favorite"), for: .normal)
+        btn.setImage(UIImage(named: "favorite_selected"), for: .selected)
+        btn.addTarget(self, action: #selector(favoriteTapped), for: .touchUpInside)
+        return btn
     }()
     
     private lazy var textView: UIView = {
@@ -101,8 +101,19 @@ final class StockCell: UITableViewCell {
         setupSubview()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        favoriteAction = nil
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func favoriteTapped() {
+        favoriteButton.isSelected.toggle()
+        favoriteAction?()
     }
     
     func setBackgroundColor(for row: Int) {
@@ -119,6 +130,11 @@ final class StockCell: UITableViewCell {
             
         dayDeltaChange.textColor = stocks.changeColor
         dayDeltaPercentage.textColor = stocks.changeColor
+        
+        favoriteButton.isSelected = stocks.isFavorite
+        favoriteAction = {
+            stocks.favoriteTapped()
+        }
     }
     
     private func setupSubview() {
@@ -162,7 +178,7 @@ final class StockCell: UITableViewCell {
     }
     
     private func setupTextView() {
-        [symbolLabel, companyLabel, favorite].forEach { view in
+        [symbolLabel, companyLabel, favoriteButton].forEach { view in
             textView.addSubview(view)
         }
 
@@ -171,8 +187,9 @@ final class StockCell: UITableViewCell {
             make.left.equalTo(textView.snp.left)
         }
         
-        favorite.snp.makeConstraints { make in
+        favoriteButton.snp.makeConstraints { make in
             make.left.equalTo(symbolLabel.snp.right).offset(6)
+            make.right.equalTo(textView.snp.right)
             make.centerY.equalTo(symbolLabel.snp.centerY)
             make.height.width.equalTo(16)
         }
@@ -180,7 +197,6 @@ final class StockCell: UITableViewCell {
         companyLabel.snp.makeConstraints { make in
             make.bottom.equalTo(textView.snp.bottom)
             make.left.equalTo(textView.snp.left)
-            make.right.equalTo(textView.snp.right)
         }
     }
     
@@ -190,14 +206,11 @@ final class StockCell: UITableViewCell {
         }
         
         currentPrice.snp.makeConstraints { make in
-//            make.centerX.equalTo(priceView.snp.centerX)
-//            make.left.equalTo(priceView.snp.left)
             make.right.equalTo(priceView.snp.right)
             make.top.equalTo(priceView.snp.top)
         }
         
         dayDeltaChange.snp.makeConstraints { make in
-            
             make.left.equalTo(priceView.snp.left)
             make.right.equalTo(dayDeltaPercentage.snp.left).offset(-5)
             make.bottom.equalTo(priceView.snp.bottom)
