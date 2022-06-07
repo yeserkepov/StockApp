@@ -22,15 +22,14 @@ protocol StocksPresenterProtocol {
 }
 
 final class StocksPresenter: StocksPresenterProtocol {
-    private let service: StocksServicesProtocol
+    private let service: StocksServiceProtocol
     private var stocks: [StockModelProtocol] = []
-    private var favorite: FavoritePresenterProtocol?
     
     var stocksCount: Int {
         stocks.count
     }
     
-    init(service: StocksServicesProtocol) {
+    init(service: StocksServiceProtocol) {
         self.service = service
     }
     
@@ -48,7 +47,7 @@ final class StocksPresenter: StocksPresenterProtocol {
             
             switch result {
             case .success(let stocks):
-                self?.stocks = stocks.map { StockModel(stock: $0) }
+                self?.stocks = stocks
                 self?.view?.updateView()
             case .failure(let error):
                 self?.view?.updateView(withError: error.localizedDescription)
@@ -68,6 +67,5 @@ extension StocksPresenter: FavoriteUpdateServiceProtocol {
         let indexPath = IndexPath(row: index, section: 0)
         
         view?.updateCell(for: indexPath)
-        favorite?.view?.updateView()
     }
 }

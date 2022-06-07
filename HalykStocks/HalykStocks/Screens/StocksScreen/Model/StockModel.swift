@@ -29,7 +29,7 @@ final class StockModel: StockModelProtocol {
 
     init(stock: StockResponse) {
         self.stock = stock
-        service = ModuleBuilder.shared.favService
+        service = Assembly.assembler.favoritesService
         isFavorite = service.isFavorite(for: id)
     }
     
@@ -69,11 +69,7 @@ final class StockModel: StockModelProtocol {
     
     func favoriteTapped() {
         isFavorite.toggle()
-        if isFavorite {
-            service.save(stocks: stock)
-        } else {
-            service.remove(stocks: stock)
-        }
+        isFavorite ? service.save(stocks: id) : service.remove(stocks: id)
         print(id, " favorite condition - ", isFavorite)
     }
 }

@@ -59,14 +59,15 @@ final class FavoriteViewController: UIViewController {
 
 extension FavoriteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ModuleBuilder.shared.detailsModule(with: presenter.model(for: indexPath))
+        
+        let vc = Assembly.assembler.detailsModule(with: presenter.model(for: indexPath))
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 extension FavoriteViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter.favCount
+        presenter.favoriteStocksCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,8 +80,9 @@ extension FavoriteViewController: UITableViewDataSource {
 }
 
 extension FavoriteViewController: FavoriteViewProtocol {
-    func updateCell(for indexPath: IndexPath) {
-        tableView.reloadRows(at: [indexPath], with: .none)
+    func updateCell(for indexPath: IndexPath, isNew: Bool) {
+        isNew ? tableView.insertRows(at: [indexPath], with: .none)
+        : tableView.deleteRows(at: [indexPath], with: .none)
     }
     
     func updateView() {

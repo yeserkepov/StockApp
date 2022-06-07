@@ -79,7 +79,7 @@ extension StocksViewController: StocksViewProtocol {
 
 extension StocksViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ModuleBuilder.shared.detailsModule(with: presenter.model(for: indexPath))
+        let vc = Assembly.assembler.detailsModule(with: presenter.model(for: indexPath))
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

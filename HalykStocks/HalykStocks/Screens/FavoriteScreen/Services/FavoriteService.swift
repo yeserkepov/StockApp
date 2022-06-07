@@ -8,10 +8,9 @@
 import Foundation
 
 protocol FavoriteServiceProtocol {
-    func save(stocks: StockResponse)
-    func remove(stocks: StockResponse)
+    func save(stocks: String)
+    func remove(stocks: String)
     func isFavorite(for id: String) -> Bool
-    func favoriteStocks() -> [StockResponse]
 }
 
 final class FavoriteService: FavoriteServiceProtocol {
@@ -19,34 +18,30 @@ final class FavoriteService: FavoriteServiceProtocol {
         FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("favorite")
     }()
     
-    private lazy var favArray: [StockResponse] = {
+    private lazy var favArray: [String] = {
         do {
             let data = try Data(contentsOf: path)
-            return try JSONDecoder().decode([StockResponse].self, from: data)
+            return try JSONDecoder().decode([String].self, from: data)
         } catch {
             print(error.localizedDescription)
         }
         return []
     }()
     
-    func favoriteStocks() -> [StockResponse] {
-        favArray
-    }
-    
-    func save(stocks: StockResponse) {
+    func save(stocks: String) {
         favArray.append(stocks)
-        updateRepo(id: stocks.id)
+        updateRepo(id: stocks)
     }
     
-    func remove(stocks: StockResponse) {
-        if let index = favArray.firstIndex(where: {$0.id == stocks.id}) {
+    func remove(stocks: String) {
+        if let index = favArray.firstIndex(where: {$0 == stocks}) {
             favArray.remove(at: index)
-            updateRepo(id: stocks.id)
+            updateRepo(id: stocks)
         }
     }
     
     func isFavorite(for id: String) -> Bool {
-        favArray.contains(where: {$0.id == id})
+        favArray.contains(where: {$0 == id})
     }
     
     private func updateRepo(id: String) {

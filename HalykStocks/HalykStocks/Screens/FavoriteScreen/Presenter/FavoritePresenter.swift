@@ -9,40 +9,39 @@ import Foundation
 
 protocol FavoriteViewProtocol: AnyObject {
     func updateView()
-    func updateCell(for indexPath: IndexPath)
+    func updateCell(for indexPath: IndexPath, isNew: Bool)
     func updateView(withLoader isLoading: Bool)
     func updateView(withError message: String)
 }
 
 protocol FavoritePresenterProtocol {
     var view: FavoriteViewProtocol? { get set }
-    var favCount: Int { get }
+    var favoriteStocksCount: Int { get }
     func loadView()
-    func loadFavorites()
     func model(for index: IndexPath) -> StockModelProtocol
 }
 
 final class FavoritePresenter: FavoritePresenterProtocol {
     weak var view: FavoriteViewProtocol?
     private var favStocks: [StockModelProtocol] = []
-    private var service: FavoriteServiceProtocol
+    private var service: StocksServiceProtocol
     
-    init(service: FavoriteServiceProtocol) {
+    init(service: StocksServiceProtocol) {
         self.service = service
+        startObservingFavNotifications()
     }
     
-    var favCount: Int {
+    var favoriteStocksCount: Int {
         favStocks.count
     }
     
     func loadView() {
-        startObservingFavNotifications()
         loadFavorites()
+        view?.updateView()
     }
     
     func loadFavorites() {
-        let stocks = service.favoriteStocks()
-        favStocks = stocks.map { StockModel(stock: $0) }
+        favStocks = service.getFavoriteStocks()
     }
     
     func model(for index: IndexPath) -> StockModelProtocol {
@@ -52,7 +51,15 @@ final class FavoritePresenter: FavoritePresenterProtocol {
 
 extension FavoritePresenter: FavoriteUpdateServiceProtocol {
     func setFavorite(notification: Notification) {
-        loadFavorites()
-        view?.updateView()
+        let old = favStocks
+        favStocks = service.getFavoriteStocks()
+        
+        guard let id = notification.stockID else { return }
+       
+        if let index = favStocks.firstIndex(where: { $0.id == id }) {
+            view?.updateCell(for: IndexPath(row: index, section: 0), isNew: true)
+        } else if let index = old.firstIndex(where: { $0.id == id }){
+            view?.updateCell(for: IndexPath(row: index, section: 0), isNew: false)
+        }
     }
 }

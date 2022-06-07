@@ -7,46 +7,32 @@
 
 import UIKit
 
-final class ModuleBuilder {
-    private init() {}
+final class Assembly {
     
-    private lazy var network: NetworkService = {
-        Network()
-    }()
+    static let assembler: Assembly = .init()
+    let favoritesService: FavoriteServiceProtocol =  FavoriteService()
+    private init () {}
     
-    static let shared: ModuleBuilder = .init()
-    
-    let favService: FavoriteServiceProtocol = FavoriteService()
-    
-    private func networkService() -> NetworkService {
-        network
-    }
-    
-    private func stocksService() -> StocksServicesProtocol {
-        StocksService(client: network)
-    }
-    
-    private func detailsService() -> DetailsServicesProtocol {
-        DetailsService(client: network)
-    }
+    private lazy var network: NetworkService = Network()
+    private lazy var stocksService: StocksServiceProtocol = StocksService(client: network)
+    private lazy var stocksPresenter: StocksPresenterProtocol = StocksPresenter(service: stocksService)
+    private lazy var detailsService: DetailsServicesProtocol =  DetailsService(client: network)
     
     private func stocksModule() -> UIViewController {
-        let presenter = StocksPresenter(service: stocksService())
-        let view = StocksViewController(presenter: presenter)
-        presenter.view = view
+        let view = StocksViewController(presenter: stocksPresenter)
+        stocksPresenter.view = view
         return view
     }
     
     private func favoriteModule() -> UIViewController {
-        let service = FavoriteService()
-        let presenter = FavoritePresenter(service: service)
+        let presenter = FavoritePresenter(service: stocksService)
         let view = FavoriteViewController(presenter: presenter)
         presenter.view = view
         return view
     }
     
     func detailsModule(with model: StockModelProtocol) -> UIViewController {
-        let presenter = DetailsPresenter(service: detailsService(), model: model)
+        let presenter = DetailsPresenter(service: detailsService, model: model)
         let view = DetailsViewController(presenter: presenter)
         presenter.view = view
         view.hidesBottomBarWhenPushed = true

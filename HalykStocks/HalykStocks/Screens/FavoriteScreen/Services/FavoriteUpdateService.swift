@@ -28,7 +28,6 @@ extension Notification {
     var stockID: String? {
         guard let userInfo = userInfo,
               let id = userInfo["id"] as? String else { return nil }
-        
         return id
     }
 }
