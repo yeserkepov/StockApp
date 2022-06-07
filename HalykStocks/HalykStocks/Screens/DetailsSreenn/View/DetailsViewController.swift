@@ -66,12 +66,10 @@ final class DetailsViewController: UIViewController {
         return lbl
     }()
     
-    private lazy var chartView: UIImageView = {
-        let image = UIImageView()
-        image.contentMode = .scaleAspectFit
-        image.clipsToBounds = true
-        image.image = UIImage(named: "launch")
-        return image
+    private lazy var chartView: ChartsContainerView = {
+        let view = ChartsContainerView()
+        view.backgroundColor = .brown
+        return view
     }()
 
     override func viewDidLoad() {
@@ -120,11 +118,10 @@ final class DetailsViewController: UIViewController {
         
         chartView.snp.makeConstraints { make in
             make.top.equalTo(dayDelta.snp.bottom).offset(40)
-            make.left.equalToSuperview().offset(10)
-            make.right.equalToSuperview().offset(-10)
-            make.bottom.equalToSuperview().offset(-40)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
         }
-        
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favoriteButton)
     }
     
