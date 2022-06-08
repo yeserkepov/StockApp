@@ -21,4 +21,9 @@ class SearchViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
+    func lesgo() {
+        //smth
+    }
 }
+
