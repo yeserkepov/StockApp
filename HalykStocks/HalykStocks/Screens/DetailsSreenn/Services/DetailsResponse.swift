@@ -8,11 +8,9 @@
 import Foundation
 
 struct DetailsResponse: Decodable {
-    let prices: [Price]
-    let market_caps: [[Double]]
-    let total_volumes: [[Double]]
+    let prices: [Value]
     
-    struct Price: Decodable {
+    struct Value: Decodable {
         let date: Date
         let price: Double
         
@@ -20,11 +18,14 @@ struct DetailsResponse: Decodable {
             let container = try decoder.singleValueContainer()
             let array = try container.decode([Double].self)
             
-            guard let time = array[safe: 0],
-                   let price = array[safe: 1] else { throw NSError() }
+            guard let date = array[safe: 0],
+                  let price = array[safe: 1] else {
+                throw NSError(domain: "Bad model from json", code: 500, userInfo: nil)
+            }
             
+            self.date = Date(timeIntervalSince1970: TimeInterval(date/1000))
             self.price = price
-            self.date = Date(timeIntervalSince1970: time)
         }
     }
 }
+

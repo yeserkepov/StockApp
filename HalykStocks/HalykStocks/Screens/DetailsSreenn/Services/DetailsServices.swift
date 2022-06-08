@@ -9,7 +9,6 @@ import Foundation
 
 protocol DetailsServicesProtocol {
     func getStockDetails(id: String, currency: String, days: String, interval: String, completion: @escaping(Result<DetailsResponse, NetworkError>) -> Void)
-    func getStockDetails(id: String, currency: String, completion: @escaping(Result<DetailsResponse, NetworkError>) -> Void)
     func getStockDetails(id: String, completion: @escaping(Result<DetailsResponse, NetworkError>) -> Void)
 }
 
@@ -24,10 +23,7 @@ final class DetailsService: DetailsServicesProtocol {
 }
 
 extension DetailsServicesProtocol {
-    func getStockDetails(id: String, currency: String, completion: @escaping(Result<DetailsResponse, NetworkError>) -> Void) {
-        getStockDetails(id: id,currency: currency, days: "60", interval: "daily", completion: completion)
-    }
     func getStockDetails(id: String, completion: @escaping(Result<DetailsResponse, NetworkError>) -> Void) {
-        getStockDetails(id: id, currency: "usd", days: "60", interval: "daily", completion: completion)
+        getStockDetails(id: id, currency: "usd", days: "360", interval: "daily", completion: completion)
     }
 }

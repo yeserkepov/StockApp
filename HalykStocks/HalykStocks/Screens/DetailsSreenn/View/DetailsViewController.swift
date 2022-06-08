@@ -68,7 +68,6 @@ final class DetailsViewController: UIViewController {
     
     private lazy var chartView: ChartsContainerView = {
         let view = ChartsContainerView()
-        view.backgroundColor = .brown
         return view
     }()
 
@@ -79,7 +78,6 @@ final class DetailsViewController: UIViewController {
         print("details VC")
         configure(with: presenter.dataConfigure())
         presenter.loadCharts()
-        
     }
     
     @objc private func favoriteTapped(sender: UIButton) {
@@ -135,15 +133,14 @@ final class DetailsViewController: UIViewController {
 }
 
 extension DetailsViewController: DetailsViewProtocol {
-    func updateView() {
-        
+    func updateView(with model: DetailsResponse) {
+        chartView.configure(with: .build(from: model))
     }
-    
+
     func updateView(withLoader isLoading: Bool) {
-        
+        chartView.configure(with: isLoading)
     }
     
     func updateView(withError message: String) {
-        
     }
 }

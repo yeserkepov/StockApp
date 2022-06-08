@@ -8,8 +8,7 @@
 import Foundation
 
 enum DetailsRouter: Router {
-    
-    // в кейс прокинуть параметр с id?
+
     case stockDetails(id: String, currency: String, days: String, interval: String)
     
     var baseUrl: String {

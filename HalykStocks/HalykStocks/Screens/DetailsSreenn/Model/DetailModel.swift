@@ -1,35 +1,24 @@
-////
-////  StockModel.swift
-////  HalykStocks
-////
-////  Created by Даурен on 28.05.2022.
-////
 //
-//import UIKit
+//  StockModel.swift
+//  HalykStocks
 //
-//protocol DetailModelProtocol {
-//    var prices: [[Double]] { get }
-//    var market_caps: [[Double]] { get }
-//    var total_volumes: [[Double]] { get }
-//}
+//  Created by Даурен on 28.05.2022.
 //
-//final class DetailModel: DetailModelProtocol {
-//    private let detail: DetailsResponse
-//    
-//    init(detail: DetailsResponse) {
-//        self.detail = detail
-//    }
-//    
-//    var prices: [[Double]] {
-//        detail.prices
-//    }
-//    
-//    var market_caps: [[Double]] {
-//        detail.market_caps
-//    }
-//    
-//    var total_volumes: [[Double]] {
-//        detail.total_volumes
-//    }
-//
-//}
+
+import Foundation
+
+struct DetailModel {
+    let periods: [Period]
+    
+    struct Period {
+        let name: String
+        let prices: [Double]
+    }
+    
+    static func build(from charts: DetailsResponse) -> DetailModel {
+        return DetailModel(periods: [Period(name: "W", prices: charts.prices.map { $0.price }),
+                                     Period(name: "M", prices: charts.prices.map { $0.price }),
+                                     Period(name: "6M", prices: charts.prices.map { $0.price }),
+                                     Period(name: "1Y", prices: charts.prices.map { $0.price })])
+    }
+}

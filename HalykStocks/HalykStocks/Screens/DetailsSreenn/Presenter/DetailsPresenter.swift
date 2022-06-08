@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DetailsViewProtocol: AnyObject {
-    func updateView()
+    func updateView(with model: DetailsResponse)
     func updateView(withLoader isLoading: Bool)
     func updateView(withError message: String)
 }
@@ -16,6 +16,7 @@ protocol DetailsViewProtocol: AnyObject {
 protocol DetailsPresenterProtocol {
     var view: DetailsViewProtocol? { get set }
     var favButtonSelected: Bool { get }
+    
     func loadCharts()
     func favTapped()
     func dataConfigure() -> StockModelProtocol
@@ -25,9 +26,8 @@ final class DetailsPresenter: DetailsPresenterProtocol {
     var favButtonSelected: Bool {
         model.isFavorite
     }
-    
+     
     private let service: DetailsServicesProtocol
-    //private var details: DetailModelProtocol?
     private let model: StockModelProtocol
     
     init(service: DetailsServicesProtocol, model: StockModelProtocol) {
@@ -47,9 +47,8 @@ final class DetailsPresenter: DetailsPresenterProtocol {
             self?.view?.updateView(withLoader: false)
             switch result {
             case .success(let chart):
-                //self?.details = DetailModel(detail: chart)
                 print(chart.prices.map { $0.date })
-                self?.view?.updateView()
+                self?.view?.updateView(with: chart)
             case .failure(let error):
                 self?.view?.updateView(withError: error.localizedDescription)
             }
