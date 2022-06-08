@@ -46,7 +46,7 @@
 		CEA08E8928422E53001375DA /* Numeric+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E8828422E53001375DA /* Numeric+Ext.swift */; };
 		CEA08E8B28422EF4001375DA /* StockRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E8A28422EF4001375DA /* StockRouter.swift */; };
 		CEA08E8D28422F4E001375DA /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E8C28422F4E001375DA /* StockModel.swift */; };
-		CEA08E8F28429B5D001375DA /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E8E28429B5C001375DA /* ModuleBuilder.swift */; };
+		CEA08E8F28429B5D001375DA /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E8E28429B5C001375DA /* Assembly.swift */; };
 		CEA08E9928447437001375DA /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E9828433F66001375DA /* DetailsPresenter.swift */; };
 		CEA08E9A28447681001375DA /* DetailsServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E9528433434001375DA /* DetailsServices.swift */; };
 		CEA08E9B28447686001375DA /* DetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E9628433434001375DA /* DetailsRouter.swift */; };
@@ -102,7 +102,7 @@
 		CEA08E8828422E53001375DA /* Numeric+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+Ext.swift"; sourceTree = "<group>"; };
 		CEA08E8A28422EF4001375DA /* StockRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRouter.swift; sourceTree = "<group>"; };
 		CEA08E8C28422F4E001375DA /* StockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockModel.swift; sourceTree = "<group>"; };
-		CEA08E8E28429B5C001375DA /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		CEA08E8E28429B5C001375DA /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		CEA08E9428433434001375DA /* DetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsResponse.swift; sourceTree = "<group>"; };
 		CEA08E9528433434001375DA /* DetailsServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsServices.swift; sourceTree = "<group>"; };
 		CEA08E9628433434001375DA /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
@@ -290,9 +290,9 @@
 		CEA08E7F28422D27001375DA /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				CEA08E8E28429B5C001375DA /* Assembly.swift */,
 				CEA08E8228422DAF001375DA /* Extensions */,
 				CEA08E5D2840745A001375DA /* Services */,
-				CEA08E8E28429B5C001375DA /* ModuleBuilder.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -569,7 +569,7 @@
 				CEA08E7C28421A8C001375DA /* StockPresenter.swift in Sources */,
 				CEA08E9A28447681001375DA /* DetailsServices.swift in Sources */,
 				CE2C45CE284CE903009F0D03 /* Collection + Ext.swift in Sources */,
-				CEA08E8F28429B5D001375DA /* ModuleBuilder.swift in Sources */,
+				CEA08E8F28429B5D001375DA /* Assembly.swift in Sources */,
 				CEA08E632840749B001375DA /* HTTPMethod.swift in Sources */,
 				CEA08EA428475D7F001375DA /* FavoritePresenter.swift in Sources */,
 				CE2C45D0284FD413009F0D03 /* ChartsView.swift in Sources */,

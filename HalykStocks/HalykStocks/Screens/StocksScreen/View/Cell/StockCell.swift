@@ -50,7 +50,7 @@ final class StockCell: UITableViewCell {
         btn.addTarget(self, action: #selector(favoriteTapped), for: .touchUpInside)
         return btn
     }()
-    
+
     private lazy var textView: UIView = {
         let view = UIView()
         return view
