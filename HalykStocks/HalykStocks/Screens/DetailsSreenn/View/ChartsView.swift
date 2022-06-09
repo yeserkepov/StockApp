@@ -12,7 +12,6 @@ final class ChartsContainerView: UIView {
     
     private var chartsView: LineChartView = {
         let view = LineChartView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.xAxis.drawLabelsEnabled = false
         view.leftAxis.enabled = false
         view.leftAxis.drawGridLinesEnabled = false
@@ -33,7 +32,6 @@ final class ChartsContainerView: UIView {
     
     private lazy var loader: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     

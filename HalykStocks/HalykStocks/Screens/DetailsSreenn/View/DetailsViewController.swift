@@ -35,7 +35,6 @@ final class DetailsViewController: UIViewController {
         lbl.textAlignment = .center
         lbl.font = UIFont.customFont(name: .moserratBold, size: 24)
         lbl.textColor = .black
-        lbl.text = "BIT"
         return lbl
     }()
     
@@ -44,7 +43,6 @@ final class DetailsViewController: UIViewController {
         lbl.textAlignment = .center
         lbl.font = UIFont.customFont(name: .moserratMedium, size: 16)
         lbl.textColor = .black
-        lbl.text = "bit"
         return lbl
     }()
     
@@ -53,7 +51,6 @@ final class DetailsViewController: UIViewController {
         lbl.textAlignment = .center
         lbl.font = UIFont.customFont(name: .moserratBold, size: 32)
         lbl.textColor = .black
-        lbl.text = "124.11 $"
         return lbl
     }()
     
@@ -62,14 +59,10 @@ final class DetailsViewController: UIViewController {
         lbl.textAlignment = .center
         lbl.font = UIFont.customFont(name: .moserratMedium, size: 16)
         lbl.textColor = .black
-        lbl.text = "-12.3 %"
         return lbl
     }()
     
-    private lazy var chartView: ChartsContainerView = {
-        let view = ChartsContainerView()
-        return view
-    }()
+    private lazy var chartView = ChartsContainerView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
