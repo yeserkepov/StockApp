@@ -12,7 +12,6 @@ final class ChartsContainerView: UIView {
     
     private var chartsView: LineChartView = {
         let view = LineChartView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.xAxis.drawLabelsEnabled = false
         view.leftAxis.enabled = false
         view.leftAxis.drawGridLinesEnabled = false
@@ -119,7 +118,8 @@ final class ChartsContainerView: UIView {
             yValues.append(dataEntry)
         }
         
-        let lineDataSet = LineChartDataSet(entries: yValues, label: period.name)
+        let lineDataSet = LineChartDataSet(entries: yValues, label: "")
+        lineDataSet.fillColor = .lightGray
         lineDataSet.valueFont = .boldSystemFont(ofSize: 10)
         lineDataSet.valueTextColor = .white
         lineDataSet.drawFilledEnabled = true
@@ -130,4 +130,3 @@ final class ChartsContainerView: UIView {
         chartsView.animate(xAxisDuration: 0.3, yAxisDuration: 0.2)
     }
 }
-

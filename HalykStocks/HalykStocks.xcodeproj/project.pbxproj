@@ -11,6 +11,7 @@
 		CE2C45CC284CD9A2009F0D03 /* FavoriteUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C45CB284CD9A2009F0D03 /* FavoriteUpdateService.swift */; };
 		CE2C45CE284CE903009F0D03 /* Collection + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C45CD284CE903009F0D03 /* Collection + Ext.swift */; };
 		CE2C45D0284FD413009F0D03 /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C45CF284FD413009F0D03 /* ChartsView.swift */; };
+		CE5E3CAC2850C952004E124D /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E3CAB2850C952004E124D /* SearchPresenter.swift */; };
 		CEA08E16283D4462001375DA /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E15283D4462001375DA /* StockCell.swift */; };
 		CEA08E2D283DF8EC001375DA /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEA08E19283DF8EB001375DA /* Montserrat-LightItalic.ttf */; };
 		CEA08E2E283DF8EC001375DA /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEA08E1A283DF8EC001375DA /* Montserrat-Medium.ttf */; };
@@ -67,6 +68,7 @@
 		CE2C45CB284CD9A2009F0D03 /* FavoriteUpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUpdateService.swift; sourceTree = "<group>"; };
 		CE2C45CD284CE903009F0D03 /* Collection + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection + Ext.swift"; sourceTree = "<group>"; };
 		CE2C45CF284FD413009F0D03 /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
+		CE5E3CAB2850C952004E124D /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		CEA08E15283D4462001375DA /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
 		CEA08E19283DF8EB001375DA /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
 		CEA08E1A283DF8EC001375DA /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
@@ -137,6 +139,22 @@
 				4111A3048424DC3059F74FA6 /* Pods-HalykStocks.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CE5E3CA92850C905004E124D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CE5E3CAB2850C952004E124D /* SearchPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CE5E3CAA2850C913004E124D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEA08E732840D2CA001375DA /* SearchViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		CEA08E18283DF8EB001375DA /* Montserrat */ = {
@@ -251,7 +269,8 @@
 		CEA08E702840D261001375DA /* SearchScreen */ = {
 			isa = PBXGroup;
 			children = (
-				CEA08E732840D2CA001375DA /* SearchViewController.swift */,
+				CE5E3CA92850C905004E124D /* Presenter */,
+				CE5E3CAA2850C913004E124D /* View */,
 			);
 			path = SearchScreen;
 			sourceTree = "<group>";
@@ -572,6 +591,7 @@
 				CEA08E8F28429B5D001375DA /* Assembly.swift in Sources */,
 				CEA08E632840749B001375DA /* HTTPMethod.swift in Sources */,
 				CEA08EA428475D7F001375DA /* FavoritePresenter.swift in Sources */,
+				CE5E3CAC2850C952004E124D /* SearchPresenter.swift in Sources */,
 				CE2C45D0284FD413009F0D03 /* ChartsView.swift in Sources */,
 				CEA08E642840749B001375DA /* Router.swift in Sources */,
 				CEA08E9D28447817001375DA /* DetailModel.swift in Sources */,

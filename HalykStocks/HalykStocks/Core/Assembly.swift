@@ -31,6 +31,13 @@ final class Assembly {
         return view
     }
     
+    private func searchModule() -> UIViewController {
+        let presenter = FavoritePresenter(service: stocksService)
+        let view = FavoriteViewController(presenter: presenter)
+        presenter.view = view
+        return view
+    }
+    
     func detailsModule(with model: StockModelProtocol) -> UIViewController {
         let presenter = DetailsPresenter(service: detailsService, model: model)
         let view = DetailsViewController(presenter: presenter)
