@@ -7,60 +7,53 @@
 
 import Foundation
 
-protocol SearchViewProtocol: AnyObject {
-    func updateView()
-    func updateCell(for indexPath: IndexPath, isNew: Bool)
-    func updateView(withLoader isLoading: Bool)
-    func updateView(withError message: String)
+protocol SearchTextFieldDelegate: AnyObject {
+    func textDidChange(with text: String?)
 }
 
-protocol SearchPresenterProtocol {
-    var view: SearchViewProtocol? { get set }
-    var favoriteStocksCount: Int { get }
+protocol SearchPresenterProtocol: SearchTextFieldDelegate {
+    var view: StocksViewProtocol? { get set }
+    var searchedStocksCount: Int { get }
     func loadView()
     func model(for index: IndexPath) -> StockModelProtocol
 }
 
-final class SearchPresenter: FavoritePresenterProtocol {
-    weak var view: FavoriteViewProtocol?
-    private var favStocks: [StockModelProtocol] = []
-    private var service: StocksServiceProtocol
+final class SearchPresenter: SearchPresenterProtocol {
+    weak var view: StocksViewProtocol?
+    private var searchedStocks: [StockModelProtocol] = []
+    private let service: SearchServiceProtocol
     
-    init(service: StocksServiceProtocol) {
+    init(service: SearchServiceProtocol) {
         self.service = service
         startObservingFavNotifications()
     }
     
-    var favoriteStocksCount: Int {
-        favStocks.count
+    var searchedStocksCount: Int {
+        searchedStocks.count
     }
     
     func loadView() {
-        loadFavorites()
+        searchedStocks = service.getSearchedStocks(with: "")
         view?.updateView()
     }
-    
-    func loadFavorites() {
-        favStocks = service.getFavoriteStocks()
-    }
-    
+
     func model(for index: IndexPath) -> StockModelProtocol {
-        favStocks[index.row]
+        searchedStocks[index.row]
+    }
+}
+
+extension SearchPresenter: SearchTextFieldDelegate {
+    func textDidChange(with text: String?) {
+        searchedStocks = service.getSearchedStocks(with: text)
+        view?.updateView()
     }
 }
 
 extension SearchPresenter: FavoriteUpdateServiceProtocol {
     func setFavorite(notification: Notification) {
-        let old = favStocks
-        favStocks = service.getFavoriteStocks()
-        
-        guard let id = notification.stockID else { return }
-       
-        if let index = favStocks.firstIndex(where: { $0.id == id }) {
-            view?.updateCell(for: IndexPath(row: index, section: 0), isNew: true)
-        } else if let index = old.firstIndex(where: { $0.id == id }){
-            view?.updateCell(for: IndexPath(row: index, section: 0), isNew: false)
-        }
+        guard let id = notification.stockID,
+                let index = searchedStocks.firstIndex(where: { $0.id == id }) else { return }
+
+        view?.updateCell(for: IndexPath(row: index, section: 0))
     }
 }
-

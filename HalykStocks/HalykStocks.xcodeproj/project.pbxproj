@@ -12,6 +12,8 @@
 		CE2C45CE284CE903009F0D03 /* Collection + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C45CD284CE903009F0D03 /* Collection + Ext.swift */; };
 		CE2C45D0284FD413009F0D03 /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C45CF284FD413009F0D03 /* ChartsView.swift */; };
 		CE5E3CAC2850C952004E124D /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E3CAB2850C952004E124D /* SearchPresenter.swift */; };
+		CE5E3CAF2852FE6E004E124D /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E3CAE2852FE6E004E124D /* SearchService.swift */; };
+		CE5E3CB128533F9F004E124D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E3CB028533F9F004E124D /* SearchView.swift */; };
 		CEA08E16283D4462001375DA /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA08E15283D4462001375DA /* StockCell.swift */; };
 		CEA08E2D283DF8EC001375DA /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEA08E19283DF8EB001375DA /* Montserrat-LightItalic.ttf */; };
 		CEA08E2E283DF8EC001375DA /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEA08E1A283DF8EC001375DA /* Montserrat-Medium.ttf */; };
@@ -69,6 +71,8 @@
 		CE2C45CD284CE903009F0D03 /* Collection + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection + Ext.swift"; sourceTree = "<group>"; };
 		CE2C45CF284FD413009F0D03 /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
 		CE5E3CAB2850C952004E124D /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		CE5E3CAE2852FE6E004E124D /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		CE5E3CB028533F9F004E124D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		CEA08E15283D4462001375DA /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
 		CEA08E19283DF8EB001375DA /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
 		CEA08E1A283DF8EC001375DA /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
@@ -153,8 +157,17 @@
 			isa = PBXGroup;
 			children = (
 				CEA08E732840D2CA001375DA /* SearchViewController.swift */,
+				CE5E3CB028533F9F004E124D /* SearchView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CE5E3CAD2852FE51004E124D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CE5E3CAE2852FE6E004E124D /* SearchService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		CEA08E18283DF8EB001375DA /* Montserrat */ = {
@@ -269,6 +282,7 @@
 		CEA08E702840D261001375DA /* SearchScreen */ = {
 			isa = PBXGroup;
 			children = (
+				CE5E3CAD2852FE51004E124D /* Service */,
 				CE5E3CA92850C905004E124D /* Presenter */,
 				CE5E3CAA2850C913004E124D /* View */,
 			);
@@ -584,6 +598,7 @@
 				CEA3866D283D3F6A0061FCF0 /* AppDelegate.swift in Sources */,
 				CEA08E16283D4462001375DA /* StockCell.swift in Sources */,
 				CEA08E8728422DF6001375DA /* UIFont+Ext.swift in Sources */,
+				CE5E3CB128533F9F004E124D /* SearchView.swift in Sources */,
 				CEA08E742840D2CA001375DA /* SearchViewController.swift in Sources */,
 				CEA08E7C28421A8C001375DA /* StockPresenter.swift in Sources */,
 				CEA08E9A28447681001375DA /* DetailsServices.swift in Sources */,
@@ -595,6 +610,7 @@
 				CE2C45D0284FD413009F0D03 /* ChartsView.swift in Sources */,
 				CEA08E642840749B001375DA /* Router.swift in Sources */,
 				CEA08E9D28447817001375DA /* DetailModel.swift in Sources */,
+				CE5E3CAF2852FE6E004E124D /* SearchService.swift in Sources */,
 				CE2C45CC284CD9A2009F0D03 /* FavoriteUpdateService.swift in Sources */,
 				CEA08EA02847379A001375DA /* FavoriteService.swift in Sources */,
 				CEA08E762840D2D7001375DA /* FavoriteViewController.swift in Sources */,

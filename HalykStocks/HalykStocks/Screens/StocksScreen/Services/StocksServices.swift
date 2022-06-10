@@ -15,6 +15,8 @@ protocol StocksServiceProtocol {
     func getStocks(completion: @escaping (Result<[StockModelProtocol], NetworkError>) -> (Void))
 
     func getFavoriteStocks() -> [StockModelProtocol]
+    
+    func getAllStocks() -> [StockModelProtocol]
 }
 
 final class StocksService: StocksServiceProtocol {
@@ -22,7 +24,6 @@ final class StocksService: StocksServiceProtocol {
     private let client: NetworkService
     private var stocksModels: [StockModelProtocol] = []
 
-    // можно здесь создать проперти и для избранных
     init(client: NetworkService) {
         self.client = client
     }
@@ -44,7 +45,11 @@ final class StocksService: StocksServiceProtocol {
     func getFavoriteStocks() -> [StockModelProtocol] {
         stocksModels.filter {$0.isFavorite}
     }
-
+    
+    func getAllStocks() -> [StockModelProtocol] {
+        stocksModels
+    }
+    
     private func serviceCompletion(with completion: @escaping (Result<[StockModelProtocol], NetworkError>) -> (Void) ) -> (Result<[StockResponse], NetworkError>) -> (Void) {
         { [weak self] result in
             switch result {
