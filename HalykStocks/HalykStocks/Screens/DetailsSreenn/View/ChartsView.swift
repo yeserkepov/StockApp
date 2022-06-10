@@ -8,7 +8,7 @@
 import UIKit
 import Charts
 
-final class ChartsContainerView: UIView {
+final class ChartsView: UIView {
     
     private var chartsView: LineChartView = {
         let view = LineChartView()
@@ -81,7 +81,7 @@ final class ChartsContainerView: UIView {
     private func addButtons(for model: DetailModel) {
         model.periods.enumerated().forEach { (index, period) in
             let button = UIButton()
-            if period.name == "1Y" {
+            if period.name == "W" {
                 button.backgroundColor = UIColor.black
                 button.setTitle(period.name, for: .normal)
                 button.setTitleColor(.white, for: .normal)
@@ -117,7 +117,7 @@ final class ChartsContainerView: UIView {
             yValues.append(dataEntry)
         }
         
-        let lineDataSet = LineChartDataSet(entries: yValues, label: period.name)
+        let lineDataSet = LineChartDataSet(entries: yValues, label: "")
         lineDataSet.valueFont = .boldSystemFont(ofSize: 10)
         lineDataSet.valueTextColor = .white
         lineDataSet.drawFilledEnabled = true

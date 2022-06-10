@@ -62,7 +62,7 @@ final class DetailsViewController: UIViewController {
         return lbl
     }()
     
-    private lazy var chartView = ChartsContainerView()
+    private lazy var chartView = ChartsView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
