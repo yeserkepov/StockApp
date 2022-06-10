@@ -121,7 +121,7 @@ final class ChartsContainerView: UIView {
         let lineDataSet = LineChartDataSet(entries: yValues, label: "")
         lineDataSet.fillColor = .lightGray
         lineDataSet.valueFont = .boldSystemFont(ofSize: 10)
-        lineDataSet.valueTextColor = .white
+        lineDataSet.valueTextColor = .black
         lineDataSet.drawFilledEnabled = true
         lineDataSet.circleRadius = 3.0
         lineDataSet.circleHoleRadius = 2.0
