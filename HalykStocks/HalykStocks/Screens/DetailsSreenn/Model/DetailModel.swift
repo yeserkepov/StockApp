@@ -18,11 +18,13 @@ struct DetailModel {
     static func build(from charts: DetailsResponse) -> DetailModel {
         let yearPeriod = charts.prices.map {$0.price}
         
-        return DetailModel(periods: [
-                                    Period(name: "W", prices: yearPeriod.suffix(7)),
-                                    Period(name: "M", prices: yearPeriod.suffix(30)),
-                                    Period(name: "6M", prices: yearPeriod.suffix(180)),
-                                    Period(name: "1Y", prices: yearPeriod)
-                                    ])
+        let model = DetailModel(periods: [
+            Period(name: "W", prices: yearPeriod.suffix(7)),
+            Period(name: "M", prices: yearPeriod.suffix(30)),
+            Period(name: "6M", prices: yearPeriod.suffix(180)),
+            Period(name: "1Y", prices: yearPeriod)
+            ])
+        
+        return model
     }
 }

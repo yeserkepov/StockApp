@@ -10,6 +10,8 @@ import Charts
 
 final class ChartsView: UIView {
     
+    private var chartsModel: DetailModel?
+    
     private var chartsView: LineChartView = {
         let view = LineChartView()
         view.xAxis.drawLabelsEnabled = false
@@ -53,6 +55,7 @@ final class ChartsView: UIView {
     func configure(with model: DetailModel) {
         addButtons(for: model)
         setCharts(with: model.periods.first)
+        self.chartsModel = model
     }
     
     private func setupSubviews() {
@@ -104,6 +107,18 @@ final class ChartsView: UIView {
             $0.backgroundColor = sender.tag == $0.tag ? .black : UIColor.buttonBackgroundColor
             $0.setTitleColor(sender.tag == $0.tag ? .white : .black, for: .normal)
         }
+        switch sender.tag {
+        case 0:
+            setCharts(with: chartsModel?.periods[0])
+        case 1:
+            setCharts(with: chartsModel?.periods[1])
+        case 2:
+            setCharts(with: chartsModel?.periods[2])
+        case 3:
+            setCharts(with: chartsModel?.periods[3])
+        default:
+            break
+        }
     }
     
     private func setCharts(with period: DetailModel.Period?) {
@@ -119,7 +134,7 @@ final class ChartsView: UIView {
         
         let lineDataSet = LineChartDataSet(entries: yValues, label: "")
         lineDataSet.valueFont = .boldSystemFont(ofSize: 10)
-        lineDataSet.valueTextColor = .white
+        lineDataSet.valueTextColor = .black
         lineDataSet.drawFilledEnabled = true
         lineDataSet.circleRadius = 3.0
         lineDataSet.circleHoleRadius = 2.0
