@@ -31,6 +31,14 @@ final class Assembly {
         return view
     }
     
+    private func searchModule() -> UIViewController {
+        let searchService = SearchService(service: stocksService)
+        let presenter = SearchPresenter(service: searchService)
+        let view = SearchViewController(presenter: presenter)
+        presenter.view = view
+        return view
+    }
+    
     func detailsModule(with model: StockModelProtocol) -> UIViewController {
         let presenter = DetailsPresenter(service: detailsService, model: model)
         let view = DetailsViewController(presenter: presenter)
@@ -44,7 +52,7 @@ final class Assembly {
         let tabBar = UITabBarController()
         let stocksVC = stocksModule()
         stocksVC.tabBarItem = UITabBarItem(title: "Stocks", image: UIImage(named: "stocks"), tag: 0)
-        let searchVC = SearchViewController()
+        let searchVC = searchModule()
         searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "search"), tag: 1)
         let favoriteVC = favoriteModule()
         favoriteVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favorite"), tag: 2)

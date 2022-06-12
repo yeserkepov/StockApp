@@ -62,7 +62,22 @@ final class DetailsViewController: UIViewController {
         return lbl
     }()
     
+
+    
+    private lazy var buyButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.backgroundColor = UIColor.black
+        btn.setTitleColor(.white, for: .normal)
+        btn.setTitle("BUY", for: .normal)
+        btn.titleLabel?.font = UIFont.customFont(name: .moserratBold, size: 20)
+        btn.layer.cornerRadius = 12
+        btn.addTarget(self, action: #selector(buyButtonTapped), for: .touchUpInside)
+        btn.layer.cornerCurve = .continuous
+        return btn
+    }()
+
     private lazy var chartView = ChartsView()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,12 +93,16 @@ final class DetailsViewController: UIViewController {
         presenter.favTapped()
     }
     
+    @objc private func buyButtonTapped(sender: UIButton) {
+        print("buy tapped")
+    }
+    
     private func setupView() {
         view.backgroundColor = .white
     }
     
     private func setupSubviews() {
-        [stockSymbol, companyLabel, currentPrice, dayDelta, chartView].forEach {
+        [stockSymbol, companyLabel, currentPrice, dayDelta, chartView, buyButton].forEach {
             view.addSubview($0)
         }
         
@@ -111,6 +130,13 @@ final class DetailsViewController: UIViewController {
             make.top.equalTo(dayDelta.snp.bottom).offset(40)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
+        }
+        
+        buyButton.snp.makeConstraints { make in
+            make.top.equalTo(chartView.snp.bottom).offset(52)
+            make.height.equalTo(56)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
         }
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favoriteButton)

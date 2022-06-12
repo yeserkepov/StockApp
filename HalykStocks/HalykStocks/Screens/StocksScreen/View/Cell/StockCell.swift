@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class StockCell: UITableViewCell {
     private var favoriteAction: (() -> Void)?
@@ -20,7 +21,6 @@ final class StockCell: UITableViewCell {
     private lazy var iconView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.image = UIImage(named: "AMZN")
         image.clipsToBounds = true
         image.layer.cornerRadius = 12
         return image
@@ -126,6 +126,10 @@ final class StockCell: UITableViewCell {
         favoriteButton.isSelected = stocks.isFavorite
         favoriteAction = {
             stocks.favoriteTapped()
+        }
+        
+        if let url = URL(string: stocks.iconURL) {
+            iconView.kf.setImage(with: .network(url), placeholder: UIImage(named: "STNKS"))
         }
     }
     

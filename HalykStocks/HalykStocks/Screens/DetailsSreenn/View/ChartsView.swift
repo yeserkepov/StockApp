@@ -133,6 +133,7 @@ final class ChartsView: UIView {
         }
         
         let lineDataSet = LineChartDataSet(entries: yValues, label: "")
+        lineDataSet.fillColor = .lightGray
         lineDataSet.valueFont = .boldSystemFont(ofSize: 10)
         lineDataSet.valueTextColor = .black
         lineDataSet.drawFilledEnabled = true
@@ -143,4 +144,3 @@ final class ChartsView: UIView {
         chartsView.animate(xAxisDuration: 0.3, yAxisDuration: 0.2)
     }
 }
-
