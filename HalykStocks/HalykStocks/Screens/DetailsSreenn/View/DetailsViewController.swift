@@ -62,10 +62,7 @@ final class DetailsViewController: UIViewController {
         return lbl
     }()
     
-    private lazy var chartView: ChartsContainerView = {
-        let view = ChartsContainerView()
-        return view
-    }()
+
     
     private lazy var buyButton: UIButton = {
         let btn = UIButton(type: .system)
@@ -78,6 +75,9 @@ final class DetailsViewController: UIViewController {
         btn.layer.cornerCurve = .continuous
         return btn
     }()
+
+    private lazy var chartView = ChartsView()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()

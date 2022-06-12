@@ -14,6 +14,7 @@ protocol DetailsServicesProtocol {
 
 final class DetailsService: DetailsServicesProtocol {
     private let client: NetworkService
+    private var detailModels: [DetailModel] = []
     internal init(client: NetworkService) {
         self.client = client
     }

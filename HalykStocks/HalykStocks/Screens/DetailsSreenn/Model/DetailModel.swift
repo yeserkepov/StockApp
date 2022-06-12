@@ -16,9 +16,15 @@ struct DetailModel {
     }
     
     static func build(from charts: DetailsResponse) -> DetailModel {
-        return DetailModel(periods: [Period(name: "W", prices: charts.prices.map { $0.price }),
-                                     Period(name: "M", prices: charts.prices.map { $0.price }),
-                                     Period(name: "6M", prices: charts.prices.map { $0.price }),
-                                     Period(name: "1Y", prices: charts.prices.map { $0.price })])
+        let yearPeriod = charts.prices.map {$0.price}
+        
+        let model = DetailModel(periods: [
+            Period(name: "W", prices: yearPeriod.suffix(7)),
+            Period(name: "M", prices: yearPeriod.suffix(30)),
+            Period(name: "6M", prices: yearPeriod.suffix(180)),
+            Period(name: "1Y", prices: yearPeriod)
+            ])
+        
+        return model
     }
 }

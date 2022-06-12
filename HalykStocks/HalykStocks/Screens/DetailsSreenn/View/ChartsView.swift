@@ -8,7 +8,9 @@
 import UIKit
 import Charts
 
-final class ChartsContainerView: UIView {
+final class ChartsView: UIView {
+    
+    private var chartsModel: DetailModel?
     
     private var chartsView: LineChartView = {
         let view = LineChartView()
@@ -32,7 +34,6 @@ final class ChartsContainerView: UIView {
     
     private lazy var loader: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -54,6 +55,7 @@ final class ChartsContainerView: UIView {
     func configure(with model: DetailModel) {
         addButtons(for: model)
         setCharts(with: model.periods.first)
+        self.chartsModel = model
     }
     
     private func setupSubviews() {
@@ -82,7 +84,7 @@ final class ChartsContainerView: UIView {
     private func addButtons(for model: DetailModel) {
         model.periods.enumerated().forEach { (index, period) in
             let button = UIButton()
-            if period.name == "1Y" {
+            if period.name == "W" {
                 button.backgroundColor = UIColor.black
                 button.setTitle(period.name, for: .normal)
                 button.setTitleColor(.white, for: .normal)
@@ -104,6 +106,18 @@ final class ChartsContainerView: UIView {
         buttonsStackView.subviews.compactMap { $0 as? UIButton }.forEach {
             $0.backgroundColor = sender.tag == $0.tag ? .black : UIColor.buttonBackgroundColor
             $0.setTitleColor(sender.tag == $0.tag ? .white : .black, for: .normal)
+        }
+        switch sender.tag {
+        case 0:
+            setCharts(with: chartsModel?.periods[0])
+        case 1:
+            setCharts(with: chartsModel?.periods[1])
+        case 2:
+            setCharts(with: chartsModel?.periods[2])
+        case 3:
+            setCharts(with: chartsModel?.periods[3])
+        default:
+            break
         }
     }
     
