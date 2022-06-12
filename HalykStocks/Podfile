@@ -7,5 +7,6 @@ target 'HalykStocks' do
 
   # Pods for HalykStocks
 pod 'SnapKit'
+pod 'Charts'
 
 end

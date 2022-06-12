@@ -8,6 +8,7 @@
 import UIKit
 
 final class StockCell: UITableViewCell {
+    private var favoriteAction: (() -> Void)?
     
     private lazy var backView: UIView = {
         let view = UIView()
@@ -41,14 +42,15 @@ final class StockCell: UITableViewCell {
         return lbl
     }()
     
-    private lazy var favorite: UIImageView = {
-        let image = UIImageView()
-        image.contentMode = .scaleAspectFit
-        image.clipsToBounds = true
-        image.image = UIImage(named: "star_grey")
-        return image
+    private lazy var favoriteButton: UIButton = {
+        let btn = UIButton()
+        btn.contentMode = .scaleAspectFit
+        btn.setImage(UIImage(named: "favorite"), for: .normal)
+        btn.setImage(UIImage(named: "favorite_selected"), for: .selected)
+        btn.addTarget(self, action: #selector(favoriteTapped), for: .touchUpInside)
+        return btn
     }()
-    
+
     private lazy var textView: UIView = {
         let view = UIView()
         return view
@@ -91,29 +93,39 @@ final class StockCell: UITableViewCell {
         setupSubview()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        favoriteAction = nil
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func favoriteTapped() {
+        favoriteButton.isSelected.toggle()
+        favoriteAction?()
     }
     
     func setBackgroundColor(for row: Int) {
         backView.backgroundColor = row % 2 == 0 ? UIColor.stocksGrey : UIColor.stocksWhite
     }
     
-    func configure(with stocks: Stock) {
-        symbolLabel.text = stocks.symbol.uppercased()
+    func configure(with stocks: StockModelProtocol) {
+        symbolLabel.text = stocks.symbol
         companyLabel.text = stocks.name
-        currentPrice.text = Double.checkDecimal(check: stocks.price)
+        currentPrice.text = stocks.price
+
+        dayDeltaChange.text = stocks.change
+        dayDeltaPercentage.text = stocks.changePercentage
+            
+        dayDeltaChange.textColor = stocks.changeColor
+        dayDeltaPercentage.textColor = stocks.changeColor
         
-        if stocks.change >= 0.0 {
-            dayDeltaChange.text = Double.checkDecimal(check: stocks.change)
-            dayDeltaChange.textColor = .stocksDeltaGreen
-            dayDeltaPercentage.text = Double.checkDecimalPerc(check: stocks.changePercentage)
-            dayDeltaPercentage.textColor = .stocksDeltaGreen
-        } else {
-            dayDeltaChange.text = Double.checkDecimal(check: stocks.change)
-            dayDeltaChange.textColor = .stocksDeltaRed
-            dayDeltaPercentage.text = Double.checkDecimalPerc(check: stocks.changePercentage)
-            dayDeltaPercentage.textColor = .stocksDeltaRed
+        favoriteButton.isSelected = stocks.isFavorite
+        favoriteAction = {
+            stocks.favoriteTapped()
         }
     }
     
@@ -131,52 +143,52 @@ final class StockCell: UITableViewCell {
         }
         
         backView.snp.makeConstraints { make in
-            make.left.equalTo(contentView.snp.left)
-            make.right.equalTo(contentView.snp.right)
-            make.top.equalTo(contentView.snp.top)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-8)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-8)
         }
         
         iconView.snp.makeConstraints { make in
-            make.top.equalTo(backView.snp.top).offset(8)
-            make.left.equalTo(backView.snp.left).offset(8)
-            make.bottom.equalTo(backView.snp.bottom).offset(-8)
+            make.top.equalToSuperview().offset(8)
+            make.left.equalToSuperview().offset(8)
+            make.bottom.equalToSuperview().offset(-8)
             make.height.width.equalTo(52)
         }
         
         textView.snp.makeConstraints { make in
-            make.top.equalTo(backView.snp.top).offset(14)
+            make.top.equalToSuperview().offset(14)
             make.left.equalTo(iconView.snp.right).offset(12)
-            make.bottom.equalTo(backView.snp.bottom).offset(-14)
+            make.bottom.equalToSuperview().offset(-14)
         }
         
         priceView.snp.makeConstraints { make in
-            make.top.equalTo(backView.snp.top).offset(14)
-            make.right.equalTo(backView.snp.right).offset(-12)
-            make.bottom.equalTo(backView.snp.bottom).offset(-14)
+            make.top.equalToSuperview().offset(14)
+            make.right.equalToSuperview().offset(-12)
+            make.bottom.equalToSuperview().offset(-14)
         }
     }
     
     private func setupTextView() {
-        [symbolLabel, companyLabel, favorite].forEach { view in
+        [symbolLabel, companyLabel, favoriteButton].forEach { view in
             textView.addSubview(view)
         }
 
         symbolLabel.snp.makeConstraints { make in
-            make.top.equalTo(textView.snp.top)
-            make.left.equalTo(textView.snp.left)
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
         }
         
-        favorite.snp.makeConstraints { make in
+        favoriteButton.snp.makeConstraints { make in
             make.left.equalTo(symbolLabel.snp.right).offset(6)
+            make.right.equalToSuperview()
             make.centerY.equalTo(symbolLabel.snp.centerY)
             make.height.width.equalTo(16)
         }
         
         companyLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(textView.snp.bottom)
-            make.left.equalTo(textView.snp.left)
-            make.right.equalTo(textView.snp.right)
+            make.bottom.equalToSuperview()
+            make.left.equalToSuperview()
         }
     }
     
@@ -186,24 +198,19 @@ final class StockCell: UITableViewCell {
         }
         
         currentPrice.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.left.equalTo(priceView.snp.left)
-            make.right.equalTo(priceView.snp.right)
-            make.top.equalTo(priceView.snp.top)
+            make.right.equalToSuperview()
+            make.top.equalToSuperview()
         }
         
         dayDeltaChange.snp.makeConstraints { make in
-            
-            make.left.equalTo(priceView.snp.left)
+            make.left.equalToSuperview()
             make.right.equalTo(dayDeltaPercentage.snp.left).offset(-5)
-            make.bottom.equalTo(priceView.snp.bottom)
+            make.bottom.equalToSuperview()
         }
         
         dayDeltaPercentage.snp.makeConstraints { make in
-            
-            make.left.equalTo(dayDeltaChange.snp.right)
-            make.right.equalTo(priceView.snp.right)
-            make.bottom.equalTo(priceView.snp.bottom)
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
 }

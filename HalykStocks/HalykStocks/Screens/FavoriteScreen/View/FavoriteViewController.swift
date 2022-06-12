@@ -1,17 +1,17 @@
 //
-//  ViewController.swift
+//  FavoriteViewController.swift
 //  HalykStocks
 //
-//  Created by Даурен on 24.05.2022.
+//  Created by Даурен on 27.05.2022.
 //
 
 import UIKit
 import SnapKit
 
-final class StocksViewController: UIViewController {
-    private let presenter: StocksPresenterProtocol
+final class FavoriteViewController: UIViewController {
+    private let presenter: FavoritePresenterProtocol
     
-    init(presenter: StocksPresenterProtocol) {
+    init(presenter: FavoritePresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -24,6 +24,7 @@ final class StocksViewController: UIViewController {
         let table = UITableView()
         table.delegate = self
         table.dataSource = self
+        table.translatesAutoresizingMaskIntoConstraints = false
         table.register(StockCell.self, forCellReuseIdentifier: StockCell.typeName)
         table.separatorStyle = .none
         table.showsVerticalScrollIndicator = false
@@ -33,16 +34,15 @@ final class StocksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupSubviews()
-        
         presenter.loadView()
     }
     
     private func setupView() {
         view.backgroundColor = .white
-        title = "Stocks"
+        title = "Favorite"
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
+        setupSubviews()
     }
     
     private func setupSubviews() {
@@ -55,15 +55,34 @@ final class StocksViewController: UIViewController {
             make.bottom.equalToSuperview()
         }
     }
-    
-    private func showError(_ message: Error) {
-        print(message.localizedDescription)
+}
+
+extension FavoriteViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let vc = Assembly.assembler.detailsModule(with: presenter.model(for: indexPath))
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
-extension StocksViewController: StocksViewProtocol {
-    func updateCell(for indexPath: IndexPath) {
-        tableView.reloadRows(at: [indexPath], with: .none)
+extension FavoriteViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        presenter.favoriteStocksCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.typeName, for: indexPath) as! StockCell
+        cell.setBackgroundColor(for: indexPath.row)
+        cell.selectionStyle = .none
+        cell.configure(with: presenter.model(for: indexPath))
+        return cell
+    }
+}
+
+extension FavoriteViewController: FavoriteViewProtocol {
+    func updateCell(for indexPath: IndexPath, isNew: Bool) {
+        isNew ? tableView.insertRows(at: [indexPath], with: .none)
+        : tableView.deleteRows(at: [indexPath], with: .none)
     }
     
     func updateView() {
@@ -71,30 +90,10 @@ extension StocksViewController: StocksViewProtocol {
     }
     
     func updateView(withLoader isLoading: Bool) {
+        
     }
     
     func updateView(withError message: String) {
-    }
-}
-
-extension StocksViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = Assembly.assembler.detailsModule(with: presenter.model(for: indexPath))
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-extension StocksViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.typeName, for: indexPath) as! StockCell
-        cell.setBackgroundColor(for: indexPath.row)
-        cell.selectionStyle = .none
-        cell.configure(with: presenter.model(for: indexPath))
         
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter.stocksCount
     }
 }
